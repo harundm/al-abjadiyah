@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learn Arabic Alphabet | أَبْجَدِيَّة - Alif to Ya</title>
-  <meta name="description" content="Interactive Arabic Alphabet Learning Platform. Learn Alif Ba Ta until Ya with pronunciation, letter forms, vocabulary examples, tracing canvas, and quizzes.">
+  <title id="pageTitle">Learn Arabic Alphabet | Al-Abjadīyah - Alif to Ya</title>
+  <meta name="description" content="Interactive Arabic Alphabet Learning Platform. Learn Alif Ba Ta until Ya with English and Bahasa Melayu translations, pronunciations, contextual letter forms, tracing canvas, and quizzes.">
   
   <!-- Google Fonts for authentic Arabic calligraphy and modern UI -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -96,7 +96,6 @@
         radial-gradient(circle at 90% 85%, rgba(15, 81, 50, 0.06) 0%, transparent 45%);
     }
 
-    /* Arabic typography helper */
     .ar {
       font-family: var(--font-arabic);
       direction: rtl;
@@ -142,6 +141,7 @@
       align-items: center;
       justify-content: space-between;
       height: 76px;
+      gap: 16px;
     }
 
     .brand {
@@ -150,6 +150,7 @@
       gap: 14px;
       text-decoration: none;
       color: var(--text-main);
+      flex-shrink: 0;
     }
 
     .brand-logo {
@@ -194,13 +195,14 @@
     .nav-tab {
       padding: 8px 18px;
       border-radius: var(--radius-full);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: var(--text-muted);
       display: flex;
       align-items: center;
       gap: 8px;
       transition: var(--transition);
+      white-space: nowrap;
     }
 
     .nav-tab:hover {
@@ -221,7 +223,41 @@
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    /* Language Switcher */
+    .lang-switch-group {
+      display: flex;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .lang-pill {
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .lang-pill:hover {
+      color: var(--text-main);
+    }
+
+    .lang-pill.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(15, 81, 50, 0.25);
     }
 
     .icon-btn {
@@ -246,7 +282,7 @@
        HERO BANNER
        ========================================================================== */
     .hero {
-      padding: 40px 0 24px;
+      padding: 38px 0 24px;
       text-align: center;
       position: relative;
     }
@@ -291,12 +327,12 @@
 
     .hero-desc {
       color: var(--text-muted);
-      max-width: 650px;
+      max-width: 660px;
       margin: 0 auto 28px;
       font-size: 1.05rem;
+      line-height: 1.6;
     }
 
-    /* Quick Stats Bar */
     .stats-bar {
       display: inline-flex;
       flex-wrap: wrap;
@@ -346,7 +382,7 @@
     .search-box {
       flex: 1;
       min-width: 280px;
-      max-width: 420px;
+      max-width: 440px;
       position: relative;
     }
 
@@ -422,7 +458,7 @@
     }
 
     /* ==========================================================================
-       VIEW: ALPHABET GRID
+       TAB CONTENT & VIEWS
        ========================================================================== */
     .tab-content {
       display: none;
@@ -438,6 +474,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Alphabet Grid */
     .alphabet-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -585,6 +622,10 @@
       border-radius: var(--radius-sm);
       margin: 8px 0 14px;
       font-style: italic;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .card-footer {
@@ -638,7 +679,7 @@
     }
 
     /* ==========================================================================
-       VIEW: FLASHCARDS
+       FLASHCARDS
        ========================================================================== */
     .flashcards-container {
       max-width: 640px;
@@ -760,7 +801,7 @@
     }
 
     /* ==========================================================================
-       VIEW: QUIZ
+       QUIZ
        ========================================================================== */
     .quiz-container {
       max-width: 680px;
@@ -874,7 +915,7 @@
     }
 
     /* ==========================================================================
-       VIEW: TRACING & WRITING PRACTICE
+       CANVAS WRITING & TRACING STUDIO
        ========================================================================== */
     .canvas-studio {
       max-width: 820px;
@@ -1004,7 +1045,7 @@
     }
 
     /* ==========================================================================
-       VIEW: HARAKAT & RULES GUIDE
+       VOWELS & RULES GUIDE
        ========================================================================== */
     .guide-section {
       margin-bottom: 40px;
@@ -1334,9 +1375,7 @@
       color: var(--text-muted);
     }
 
-    /* ==========================================================================
-       CONFETTI CANVAS & CELEBRATION
-       ========================================================================== */
+    /* Confetti Canvas */
     #confettiCanvas {
       position: fixed;
       top: 0;
@@ -1347,9 +1386,7 @@
       z-index: 9999;
     }
 
-    /* ==========================================================================
-       FOOTER
-       ========================================================================== */
+    /* Footer */
     footer {
       border-top: 1px solid var(--border-color);
       background: var(--bg-surface);
@@ -1365,15 +1402,13 @@
       font-size: 1.35rem;
       color: var(--primary);
       margin-bottom: 12px;
-    } 
+    }
 
     [data-theme="dark"] .footer-quote {
       color: #8be1b7;
     }
 
-    /* ==========================================================================
-       RESPONSIVE ADJUSTMENTS
-       ========================================================================== */
+    /* Responsive */
     @media (max-width: 900px) {
       .nav-tabs {
         overflow-x: auto;
@@ -1381,8 +1416,7 @@
       }
       .nav-tab {
         padding: 6px 14px;
-        font-size: 0.85rem;
-        white-space: nowrap;
+        font-size: 0.82rem;
       }
     }
 
@@ -1427,8 +1461,8 @@
       <a href="#" class="brand">
         <div class="brand-logo">أ</div>
         <div class="brand-text">
-          <h1>Al-Abjadīyah</h1>
-          <p>Learn Arabic Alphabet: Alif to Ya</p>
+          <h1 id="brandTitle">Al-Abjadīyah</h1>
+          <p id="brandSubtitle">Learn Arabic Alphabet: Alif to Ya</p>
         </div>
       </a>
 
@@ -1436,28 +1470,38 @@
       <nav class="nav-tabs" role="tablist">
         <button class="nav-tab active" data-tab="tab-grid" role="tab">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-          Alphabet Grid
+          <span id="tabLabelGrid">Alphabet Grid</span>
         </button>
         <button class="nav-tab" data-tab="tab-flashcards" role="tab">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M7 15h0M2 9.5h20"></path></svg>
-          Flashcards
+          <span id="tabLabelFlashcards">Flashcards</span>
         </button>
         <button class="nav-tab" data-tab="tab-quiz" role="tab">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-          Quiz
+          <span id="tabLabelQuiz">Quiz</span>
         </button>
         <button class="nav-tab" data-tab="tab-canvas" role="tab">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
-          Writing Studio
+          <span id="tabLabelCanvas">Writing Studio</span>
         </button>
         <button class="nav-tab" data-tab="tab-guide" role="tab">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-          Vowels & Rules
+          <span id="tabLabelGuide">Vowels &amp; Rules</span>
         </button>
       </nav>
 
-      <!-- Theme & Audio Controls -->
+      <!-- Language Switcher & Theme Action -->
       <div class="header-actions">
+        <!-- Malay / English Language Switcher -->
+        <div class="lang-switch-group" role="group" aria-label="Language Selector">
+          <button class="lang-pill active" id="langBtnEn" data-lang="en" title="English">
+            EN
+          </button>
+          <button class="lang-pill" id="langBtnMs" data-lang="ms" title="Bahasa Melayu">
+            BM
+          </button>
+        </div>
+
         <button class="icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
           <svg id="themeIconSun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         </button>
@@ -1469,31 +1513,31 @@
   <main class="container">
     <section class="hero">
       <div class="hero-badge">
-        <span>✨ Complete 28 Arabic Letters Guide</span>
+        <span id="heroBadge">✨ Complete 28 Arabic Letters Guide</span>
       </div>
       <h2 class="hero-title">
-        Master the Arabic Alphabet <span class="arabic-accent">حُرُوفُ الهِجَاء</span>
+        <span id="heroTitleMain">Master the Arabic Alphabet</span> <span class="arabic-accent" id="heroTitleAr">حُرُوفُ الهِجَاء</span>
       </h2>
-      <p class="hero-desc">
+      <p class="hero-desc" id="heroDesc">
         From <strong>Alif (أ)</strong> to <strong>Ya (ي)</strong>. Listen to authentic pronunciations, explore how letter shapes connect, practice vocabulary words, and test your knowledge.
       </p>
 
       <div class="stats-bar">
         <div class="stat-item">
           <span class="stat-number">28</span>
-          <span class="stat-label">Core Letters</span>
+          <span class="stat-label" id="statLabelLetters">Core Letters</span>
         </div>
         <div class="stat-item">
           <span class="stat-number">4</span>
-          <span class="stat-label">Contextual Forms</span>
+          <span class="stat-label" id="statLabelForms">Contextual Forms</span>
         </div>
         <div class="stat-item">
           <span class="stat-number">14 / 14</span>
-          <span class="stat-label">Sun &amp; Moon Letters</span>
+          <span class="stat-label" id="statLabelSunMoon">Sun &amp; Moon Letters</span>
         </div>
         <div class="stat-item">
           <span class="stat-number">100%</span>
-          <span class="stat-label">Audio Enabled</span>
+          <span class="stat-label" id="statLabelAudio">Audio Enabled</span>
         </div>
       </div>
     </section>
@@ -1510,13 +1554,13 @@
         </div>
 
         <div class="filter-pills">
-          <button class="filter-btn active" data-filter="all">All Letters (28)</button>
-          <button class="filter-btn" data-filter="sun">☀️ Sun Letters (14)</button>
-          <button class="filter-btn" data-filter="moon">🌙 Moon Letters (14)</button>
-          <button class="filter-btn" data-filter="non-connector">🔗 Non-Connectors (6)</button>
+          <button class="filter-btn active" data-filter="all" id="filterBtnAll">All Letters (28)</button>
+          <button class="filter-btn" data-filter="sun" id="filterBtnSun">☀️ Sun Letters (14)</button>
+          <button class="filter-btn" data-filter="moon" id="filterBtnMoon">🌙 Moon Letters (14)</button>
+          <button class="filter-btn" data-filter="non-connector" id="filterBtnNonConn">🔗 Non-Connectors (6)</button>
           
           <button class="sound-speed-btn" id="speedToggleBtn" title="Audio Speed">
-            <span>🔊 Speed: <strong id="speedLabel">1.0x</strong></span>
+            <span id="speedBtnText">🔊 Speed:</span> <strong id="speedLabel" style="margin-left: 4px;">1.0x</strong>
           </button>
         </div>
       </div>
@@ -1533,7 +1577,7 @@
     <div id="tab-flashcards" class="tab-content">
       <div class="flashcards-container">
         <div class="flashcard-progress">
-          <span>Letter <span id="fcCurrentNum">1</span> of 28</span>
+          <span id="fcProgressText">Letter 1 of 28</span>
           <span id="fcCategoryBadge" class="badge badge-moon">Moon Letter</span>
         </div>
 
@@ -1542,7 +1586,7 @@
             <!-- FRONT -->
             <div class="flashcard-face front">
               <div class="flashcard-big-char ar" id="fcFrontChar">أ</div>
-              <div class="flashcard-hint">
+              <div class="flashcard-hint" id="fcHintText">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg>
                 Click or press Space to reveal pronunciation &amp; details
               </div>
@@ -1554,13 +1598,13 @@
                 <h3 class="letter-name-en" id="fcBackNameEn" style="font-size: 2rem;">Alif</h3>
                 <span class="letter-name-ar" id="fcBackNameAr" style="font-size: 2rem;">أَلِف</span>
               </div>
-              <div class="phonetic-guide" id="fcBackSound" style="font-size: 1.1rem; margin-bottom: 16px;">Sound of 'a' in 'father'</div>
+              <div class="phonetic-guide" id="fcBackSound" style="font-size: 1.05rem; margin-bottom: 16px;">Sound of 'a' in 'father'</div>
               
-              <div class="vocab-box" style="width: 100%; max-width: 320px; margin-bottom: 16px;">
+              <div class="vocab-box" style="width: 100%; max-width: 340px; margin-bottom: 16px;">
                 <div class="vocab-details">
                   <span class="vocab-ar ar" id="fcBackWordAr">أَرْنَب</span>
                   <span class="vocab-translit" id="fcBackWordEn">Arnab</span>
-                  <span class="vocab-meaning" id="fcBackWordMeaning">Rabbit</span>
+                  <span class="vocab-meaning" id="fcBackWordMeaning">Rabbit 🐇</span>
                 </div>
                 <button class="play-audio-btn" id="fcPlayWordBtn" title="Listen Word">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
@@ -1569,7 +1613,7 @@
 
               <button class="btn-action btn-primary" id="fcPlaySoundBtn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-                Pronounce Letter
+                <span id="fcPronounceBtnText">Pronounce Letter</span>
               </button>
             </div>
           </div>
@@ -1578,18 +1622,18 @@
         <div class="flashcard-controls">
           <button class="btn-action" id="fcPrevBtn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-            Previous
+            <span id="fcPrevLabel">Previous</span>
           </button>
           <button class="btn-action" id="fcFlipBtn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
-            Flip Card
+            <span id="fcFlipLabel">Flip Card</span>
           </button>
           <button class="btn-action" id="fcShuffleBtn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
-            Shuffle
+            <span id="fcShuffleLabel">Shuffle</span>
           </button>
           <button class="btn-action btn-primary" id="fcNextBtn">
-            Next
+            <span id="fcNextLabel">Next</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </button>
         </div>
@@ -1604,11 +1648,11 @@
         <div class="quiz-card">
           <div class="quiz-header">
             <div>
-              <span style="font-size: 0.85rem; color: var(--text-light); text-transform: uppercase; font-weight: 700;">Question <span id="quizQuestionNum">1</span> / 10</span>
-              <h3 style="font-size: 1.15rem; font-weight: 700;">Knowledge Check</h3>
+              <span style="font-size: 0.85rem; color: var(--text-light); text-transform: uppercase; font-weight: 700;" id="quizQuestionCount">Question 1 / 10</span>
+              <h3 style="font-size: 1.15rem; font-weight: 700;" id="quizHeaderTitle">Knowledge Check</h3>
             </div>
             <div class="quiz-score-badge">
-              Score: <span id="quizScore">0</span>
+              <span id="quizScorePrefix">Score:</span> <span id="quizScore">0</span>
             </div>
           </div>
 
@@ -1623,18 +1667,18 @@
           </div>
 
           <div class="quiz-options" id="quizOptionsContainer">
-            <!-- 4 Multiple choice buttons injected here -->
+            <!-- Multiple choice buttons injected here -->
           </div>
 
           <div class="quiz-feedback" id="quizFeedback"></div>
 
           <div style="text-align: center;">
             <button class="btn-action btn-primary" id="quizNextBtn" style="display: none; margin: 0 auto;">
-              Next Question
+              <span id="quizNextBtnLabel">Next Question</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
             <button class="btn-action btn-primary" id="quizRestartBtn" style="display: none; margin: 0 auto;">
-              Restart Quiz
+              <span id="quizRestartBtnLabel">Restart Quiz</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
             </button>
           </div>
@@ -1649,11 +1693,11 @@
       <div class="canvas-studio">
         <div class="studio-header">
           <div>
-            <h3 style="font-size: 1.35rem; font-weight: 700;">Arabic Letter Tracing Canvas</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">Practice calligraphy stroke flow. Arabic is written gracefully from right to left.</p>
+            <h3 style="font-size: 1.35rem; font-weight: 700;" id="canvasTitle">Arabic Letter Tracing Canvas</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);" id="canvasDesc">Practice calligraphy stroke flow. Arabic is written gracefully from right to left.</p>
           </div>
           <div class="letter-selector-wrapper">
-            <label for="canvasLetterSelect" style="font-weight: 600; font-size: 0.9rem;">Select Letter:</label>
+            <label for="canvasLetterSelect" style="font-weight: 600; font-size: 0.9rem;" id="canvasSelectLabel">Select Letter:</label>
             <select id="canvasLetterSelect" class="letter-select-input">
               <!-- Injected by JS -->
             </select>
@@ -1670,7 +1714,7 @@
 
         <div class="canvas-tools">
           <div class="tool-group">
-            <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-light); text-transform: uppercase;">Ink Color:</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-light); text-transform: uppercase;" id="canvasColorLabel">Ink Color:</span>
             <div class="color-swatch active" data-color="#0f5132" style="background: #0f5132;"></div>
             <div class="color-swatch" data-color="#d4af37" style="background: #d4af37;"></div>
             <div class="color-swatch" data-color="#1e3a8a" style="background: #1e3a8a;"></div>
@@ -1679,20 +1723,20 @@
           </div>
 
           <div class="tool-group">
-            <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-light); text-transform: uppercase;">Brush:</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-light); text-transform: uppercase;" id="canvasBrushLabel">Brush:</span>
             <input type="range" id="brushSizeInput" min="4" max="24" value="10" style="cursor: pointer; accent-color: var(--primary);">
           </div>
 
           <div class="tool-group">
-            <button class="btn-action" id="canvasToggleGuideBtn" title="Toggle Background Ghost Guide">
-              👁️ Guide: ON
+            <button class="btn-action" id="canvasToggleGuideBtn" title="Toggle Ghost Guide">
+              <span id="canvasGuideBtnText">👁️ Guide: ON</span>
             </button>
             <button class="btn-action" id="canvasPlaySoundBtn" title="Pronounce Selected">
-              🔊 Hear Letter
+              <span id="canvasHearBtnText">🔊 Hear Letter</span>
             </button>
             <button class="btn-action" id="canvasClearBtn" style="color: #ef4444;">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-              Clear
+              <span id="canvasClearBtnText">Clear</span>
             </button>
           </div>
         </div>
@@ -1705,75 +1749,75 @@
     <div id="tab-guide" class="tab-content">
       <!-- Harakat (Short Vowels) -->
       <section class="guide-section">
-        <h3 class="section-title">
+        <h3 class="section-title" id="guideHarakatTitle">
           <span>✨</span> The Short Vowels (الحَرَكَات - Harakāt)
         </h3>
-        <p class="section-subtitle">
+        <p class="section-subtitle" id="guideHarakatDesc">
           In Arabic, core letters are consonants or long vowels. Short vowel marks (tashkeel) are placed above or below letters to determine their exact vocalization.
         </p>
 
         <div class="harakat-grid">
           <div class="harakat-card">
             <div class="harakat-symbol ar">دَ</div>
-            <h4 class="harakat-name">Fatha (فَتْحَة)</h4>
-            <div class="harakat-sound">Short "a" sound (like 'u' in 'cup')</div>
-            <p class="harakat-desc">A small diagonal slash placed <em>above</em> the letter. Makes an open 'a' sound (e.g. دَ = "Da").</p>
+            <h4 class="harakat-name" id="hNameFatha">Fatha (فَتْحَة)</h4>
+            <div class="harakat-sound" id="hSoundFatha">Short "a" sound (like 'u' in 'cup')</div>
+            <p class="harakat-desc" id="hDescFatha">A small diagonal slash placed <em>above</em> the letter. Makes an open 'a' sound (e.g. دَ = "Da").</p>
           </div>
 
           <div class="harakat-card">
             <div class="harakat-symbol ar">دِ</div>
-            <h4 class="harakat-name">Kasra (كَسْرَة)</h4>
-            <div class="harakat-sound">Short "i" sound (like 'i' in 'bit')</div>
-            <p class="harakat-desc">A small diagonal slash placed <em>below</em> the letter. Makes a short 'ee/i' sound (e.g. دِ = "Di").</p>
+            <h4 class="harakat-name" id="hNameKasra">Kasra (كَسْرَة)</h4>
+            <div class="harakat-sound" id="hSoundKasra">Short "i" sound (like 'i' in 'bit')</div>
+            <p class="harakat-desc" id="hDescKasra">A small diagonal slash placed <em>below</em> the letter. Makes a short 'ee/i' sound (e.g. دِ = "Di").</p>
           </div>
 
           <div class="harakat-card">
             <div class="harakat-symbol ar">دُ</div>
-            <h4 class="harakat-name">Damma (ضَمَّة)</h4>
-            <div class="harakat-sound">Short "u" sound (like 'oo' in 'book')</div>
-            <p class="harakat-desc">A miniature loop resembling a tiny Waw placed <em>above</em> the letter. Makes a rounded 'u' sound (e.g. دُ = "Du").</p>
+            <h4 class="harakat-name" id="hNameDamma">Damma (ضَمَّة)</h4>
+            <div class="harakat-sound" id="hSoundDamma">Short "u" sound (like 'oo' in 'book')</div>
+            <p class="harakat-desc" id="hDescDamma">A miniature loop resembling a tiny Waw placed <em>above</em> the letter. Makes a rounded 'u' sound (e.g. دُ = "Du").</p>
           </div>
 
           <div class="harakat-card">
             <div class="harakat-symbol ar">دْ</div>
-            <h4 class="harakat-name">Sukun (سُكُون)</h4>
-            <div class="harakat-sound">Zero vowel / Stop</div>
-            <p class="harakat-desc">A tiny circle placed <em>above</em> the letter indicating the absence of any vowel. The consonant sound stops cleanly (e.g. دْ = "D").</p>
+            <h4 class="harakat-name" id="hNameSukun">Sukun (سُكُون)</h4>
+            <div class="harakat-sound" id="hSoundSukun">Zero vowel / Stop</div>
+            <p class="harakat-desc" id="hDescSukun">A tiny circle placed <em>above</em> the letter indicating the absence of any vowel. The consonant sound stops cleanly (e.g. دْ = "D").</p>
           </div>
         </div>
       </section>
 
       <!-- Shaddah & Tanwin -->
       <section class="guide-section">
-        <h3 class="section-title">
+        <h3 class="section-title" id="guideShaddahTitle">
           <span>⚡</span> Shaddah &amp; Tanwin (Doubling &amp; Nunation)
         </h3>
         <div class="harakat-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
           <div class="harakat-card">
             <div class="harakat-symbol ar">دّ</div>
-            <h4 class="harakat-name">Shaddah (شَدَّة)</h4>
-            <div class="harakat-sound">Consonant Doubling / Emphasis</div>
-            <p class="harakat-desc">Looks like a small 'w'. It tells you to pronounce the letter twice with extra strength and duration, holding the consonant before releasing it.</p>
+            <h4 class="harakat-name" id="hNameShaddah">Shaddah (شَدَّة)</h4>
+            <div class="harakat-sound" id="hSoundShaddah">Consonant Doubling / Emphasis</div>
+            <p class="harakat-desc" id="hDescShaddah">Looks like a small 'w'. It tells you to pronounce the letter twice with extra strength and duration, holding the consonant before releasing it.</p>
           </div>
 
           <div class="harakat-card">
             <div class="harakat-symbol ar">دًا  دٍ  دٌ</div>
-            <h4 class="harakat-name">Tanwin (تَنْوِين)</h4>
-            <div class="harakat-sound">Nunation (-an, -in, -un)</div>
-            <p class="harakat-desc">Doubling of the vowel marks at the end of indefinite nouns, adding an 'n' sound: Fathatayn (-an), Kasratayn (-in), and Dammatayn (-un).</p>
+            <h4 class="harakat-name" id="hNameTanwin">Tanwin (تَنْوِين)</h4>
+            <div class="harakat-sound" id="hSoundTanwin">Nunation (-an, -in, -un)</div>
+            <p class="harakat-desc" id="hDescTanwin">Doubling of the vowel marks at the end of indefinite nouns, adding an 'n' sound: Fathatayn (-an), Kasratayn (-in), and Dammatayn (-un).</p>
           </div>
         </div>
       </section>
 
       <!-- Sun vs Moon Letters & Non-Connectors -->
       <section class="guide-section">
-        <h3 class="section-title">
+        <h3 class="section-title" id="guideRulesTitle">
           <span>☀️ 🌙</span> Vital Arabic Orthography Rules
         </h3>
         <div class="rules-grid">
           <div class="rule-card">
-            <h3>☀️ Sun Letters (الحُرُوفُ الشَّمْسِيَّة)</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">
+            <h3 id="sunLettersTitle">☀️ Sun Letters (الحُرُوفُ الشَّمْسِيَّة)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);" id="sunLettersDesc">
               When the definite article <strong>Al- (الـ)</strong> precedes a Sun letter, the "L" sound assimilates into the letter, which takes a Shaddah (e.g., <em>ash-shams</em> instead of <em>al-shams</em>).
             </p>
             <div class="letter-tag-cloud" id="sunLettersCloud">
@@ -1782,8 +1826,8 @@
           </div>
 
           <div class="rule-card">
-            <h3>🌙 Moon Letters (الحُرُوفُ القَمَرِيَّة)</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">
+            <h3 id="moonLettersTitle">🌙 Moon Letters (الحُرُوفُ القَمَرِيَّة)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);" id="moonLettersDesc">
               When <strong>Al- (الـ)</strong> precedes a Moon letter, the "L" sound is pronounced clearly and distinctly (e.g., <em>al-qamar</em>).
             </p>
             <div class="letter-tag-cloud" id="moonLettersCloud">
@@ -1792,8 +1836,8 @@
           </div>
 
           <div class="rule-card" style="grid-column: 1 / -1;">
-            <h3>🔗 The 6 "Stubborn" Non-Connecting Letters (حُرُوفُ الفَصْل)</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;">
+            <h3 id="nonConnectorsTitle">🔗 The 6 Non-Connecting Letters (حُرُوفُ الفَصْل)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;" id="nonConnectorsDesc">
               These 6 unique letters connect to the preceding letter (from the right), but <strong>never connect to the letter after them</strong> (to the left). Any letter following them must start in its isolated or initial form!
             </p>
             <div class="letter-tag-cloud" id="nonConnectorsCloud">
@@ -1826,26 +1870,26 @@
       <div class="modal-body">
         <!-- 4 Contextual Writing Forms -->
         <div class="forms-table-wrapper">
-          <div class="info-label">Contextual Letter Forms (أَشْكَالُ الحَرْف)</div>
+          <div class="info-label" id="modalFormsLabel">Contextual Letter Forms (أَشْكَالُ الحَرْف)</div>
           <div class="forms-grid">
             <div class="form-item">
               <div class="form-glyph ar" id="modalFormIsolated">ب</div>
-              <div class="form-label-en">Isolated</div>
+              <div class="form-label-en" id="lblFormIsolated">Isolated</div>
               <div class="form-label-ar ar">مُنْفَصِل</div>
             </div>
             <div class="form-item">
               <div class="form-glyph ar" id="modalFormInitial">بـ</div>
-              <div class="form-label-en">Initial</div>
+              <div class="form-label-en" id="lblFormInitial">Initial</div>
               <div class="form-label-ar ar">بِدَايَة</div>
             </div>
             <div class="form-item">
               <div class="form-glyph ar" id="modalFormMedial">ـبـ</div>
-              <div class="form-label-en">Medial</div>
+              <div class="form-label-en" id="lblFormMedial">Medial</div>
               <div class="form-label-ar ar">وَسَط</div>
             </div>
             <div class="form-item">
               <div class="form-glyph ar" id="modalFormFinal">ـب</div>
-              <div class="form-label-en">Final</div>
+              <div class="form-label-en" id="lblFormFinal">Final</div>
               <div class="form-label-ar ar">نِهَايَة</div>
             </div>
           </div>
@@ -1853,7 +1897,7 @@
 
         <!-- Pronunciation & Articulation Point (Makhraj) -->
         <div class="info-group">
-          <div class="info-label">Pronunciation &amp; Makhraj (مَخْرَجُ الحَرْف)</div>
+          <div class="info-label" id="modalMakhrajLabel">Pronunciation &amp; Makhraj (مَخْرَجُ الحَرْف)</div>
           <p class="info-value" id="modalMakhrajDesc">
             Formed by bringing the inner wet edges of both lips together. Standard 'b' sound in English 'book'.
           </p>
@@ -1861,12 +1905,12 @@
 
         <!-- Vocabulary Example -->
         <div class="info-group">
-          <div class="info-label">Example Vocabulary Word</div>
+          <div class="info-label" id="modalVocabLabel">Example Vocabulary Word</div>
           <div class="vocab-box">
             <div class="vocab-details">
               <span class="vocab-ar ar" id="modalWordAr">بَيْت</span>
               <span class="vocab-translit" id="modalWordEn">Bayt</span>
-              <span class="vocab-meaning" id="modalWordMeaning">House / Home</span>
+              <span class="vocab-meaning" id="modalWordMeaning">House / Home 🏠</span>
             </div>
             <button class="play-audio-btn" id="modalPlayWordBtn" title="Play Word Audio">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
@@ -1878,10 +1922,10 @@
         <div style="display: flex; gap: 12px; margin-top: 24px;">
           <button class="btn-action btn-primary" id="modalPlayCharBtn" style="flex: 1;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-            Pronounce Letter
+            <span id="modalPronounceBtnText">Pronounce Letter</span>
           </button>
           <button class="btn-action" id="modalTraceBtn" style="flex: 1;">
-            ✍️ Practice Writing
+            <span id="modalTraceBtnText">✍️ Practice Writing</span>
           </button>
         </div>
       </div>
@@ -1891,48 +1935,55 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <div class="footer-quote">
+      <div class="footer-quote" id="footerQuote">
         « طَلَبُ العِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ »
       </div>
-      <p>Interactive Arabic Learning Application &bull; 28 Letters from Alif to Ya</p>
-      <p style="margin-top: 8px; font-size: 0.8rem; color: var(--text-light);">
+      <p id="footerSubtitle">Interactive Arabic Learning Application &bull; 28 Letters from Alif to Ya</p>
+      <p style="margin-top: 8px; font-size: 0.8rem; color: var(--text-light);" id="footerCrafted">
         Crafted with authentic Arabic typography and responsive Web Audio API integration.
-      </p>
-      <p style="margin-top: 8px; font-size: 0.8rem; color: var(--text-light);">
-        Copyright © Harun DM
       </p>
     </div>
   </footer>
 
   <!-- ======================================================================
-       COMPLETE ARABIC ALPHABET DATABASE & LOGIC JAVASCRIPT
+       COMPLETE ARABIC ALPHABET DATABASE & MULTILINGUAL SCRIPT
        ====================================================================== -->
   <script>
     /**
      * Complete Arabic Alphabet Dataset (28 Core Letters)
-     * Comprehensive details: Isolated, Initial, Medial, Final forms, Makhraj,
-     * Sun/Moon categorization, non-connector status, sample vocabulary.
+     * With full English and Bahasa Melayu educational translations.
      */
     const ALPHABET_DATA = [
       {
         id: 1,
         letter: "ا",
         nameEn: "Alif",
+        nameMs: "Alif",
         nameAr: "أَلِف",
         translit: "ā / ʼ",
-        sound: "Like 'a' in 'father' or glottal stop",
+        sound: {
+          en: "Like 'a' in 'father' or glottal stop",
+          ms: "Seperti 'a' dalam 'ayah' atau bunyi henti vokal"
+        },
         type: "moon",
         connector: false,
         isolated: "ا",
         initial: "ا",
         medial: "ـا",
         final: "ـا",
-        makhraj: "Al-Jawf (Oral and throat cavity) for long vowel, or deepest throat for Hamza.",
-        phoneticTip: "Acts as a carrier for vowels or represents a long 'aa' vowel.",
+        makhraj: {
+          en: "Al-Jawf (Oral and throat cavity) for long vowel, or deepest throat for Hamza.",
+          ms: "Al-Jauf (Rongga mulut & kerongkong) bagi mad asli, atau pangkal kerongkong bagi Hamzah."
+        },
+        phoneticTip: {
+          en: "Acts as a carrier for vowels or represents a long 'aa' vowel.",
+          ms: "Berfungsi sebagai pemegang tanda baris atau memanjangkan sebutan vokal 'aa'."
+        },
         example: {
           ar: "أَرْنَب",
           en: "Arnab",
-          meaning: "Rabbit 🐇",
+          meaningEn: "Rabbit 🐇",
+          meaningMs: "Arnab 🐇",
           audioWord: "أَرْنَب"
         }
       },
@@ -1940,21 +1991,32 @@
         id: 2,
         letter: "ب",
         nameEn: "Bā’",
+        nameMs: "Ba",
         nameAr: "بَاء",
         translit: "b",
-        sound: "Like 'b' in 'book'",
+        sound: {
+          en: "Like 'b' in 'book'",
+          ms: "Seperti 'b' dalam 'buku'"
+        },
         type: "moon",
         connector: true,
         isolated: "ب",
         initial: "بـ",
         medial: "ـبـ",
         final: "ـب",
-        makhraj: "Ash-Shafatayn (The Lips): Pressing the inner moist parts of both lips together firmly.",
-        phoneticTip: "Voiced bilabial plosive; exactly equivalent to the English letter B.",
+        makhraj: {
+          en: "Ash-Shafatayn (The Lips): Pressing the inner moist parts of both lips together firmly.",
+          ms: "Asy-Syafatain (Dua bibir): Rapatkan bahagian dalam bibir atas dan bibir bawah dengan kemas."
+        },
+        phoneticTip: {
+          en: "Voiced bilabial plosive; exactly equivalent to the English letter B.",
+          ms: "Konsonan bibir bersuara; sama persis seperti huruf B dalam bahasa Melayu."
+        },
         example: {
           ar: "بَيْت",
           en: "Bayt",
-          meaning: "House / Home 🏠",
+          meaningEn: "House / Home 🏠",
+          meaningMs: "Rumah 🏠",
           audioWord: "بَيْت"
         }
       },
@@ -1962,21 +2024,32 @@
         id: 3,
         letter: "ت",
         nameEn: "Tā’",
+        nameMs: "Ta",
         nameAr: "تَاء",
         translit: "t",
-        sound: "Crisp 't' as in 'tea'",
+        sound: {
+          en: "Crisp 't' as in 'tea'",
+          ms: "'t' nipis berdesir halus seperti 'tali'"
+        },
         type: "sun",
         connector: true,
         isolated: "ت",
         initial: "تـ",
         medial: "ـتـ",
         final: "ـت",
-        makhraj: "Tip of the tongue touching the roots of the upper front incisors.",
-        phoneticTip: "Light and crisp dental 't', sharper than the English alveolar 't'.",
+        makhraj: {
+          en: "Tip of the tongue touching the roots of the upper front incisors.",
+          ms: "Hujung lidah diletakkan pada pangkal gigi kapak atas."
+        },
+        phoneticTip: {
+          en: "Light and crisp dental 't', sharper than the English alveolar 't'.",
+          ms: "Huruf nipis berangin (Hamas) yang lembut dan jelas."
+        },
         example: {
           ar: "تُفَّاح",
           en: "Tuffāḥ",
-          meaning: "Apple 🍎",
+          meaningEn: "Apple 🍎",
+          meaningMs: "Epal 🍎",
           audioWord: "تُفَّاح"
         }
       },
@@ -1984,21 +2057,32 @@
         id: 4,
         letter: "ث",
         nameEn: "Thā’",
+        nameMs: "Tsa (Tha)",
         nameAr: "ثَاء",
         translit: "th",
-        sound: "Soft 'th' as in 'think' or 'three'",
+        sound: {
+          en: "Soft 'th' as in 'think' or 'three'",
+          ms: "Bunyi 'ts' lembut berdesir, lidah di celah gigi"
+        },
         type: "sun",
         connector: true,
         isolated: "ث",
         initial: "ثـ",
         medial: "ـثـ",
         final: "ـث",
-        makhraj: "Tip of the tongue touching the edges of the upper front teeth.",
-        phoneticTip: "Unvoiced dental fricative; tongue slightly protrudes between teeth.",
+        makhraj: {
+          en: "Tip of the tongue touching the edges of the upper front teeth.",
+          ms: "Hujung lidah dikeluarkan sedikit bertemu mata gigi kapak atas."
+        },
+        phoneticTip: {
+          en: "Unvoiced dental fricative; tongue slightly protrudes between teeth.",
+          ms: "Hembusan angin lembut dari celah gigi tanpa tekanan kasar."
+        },
         example: {
           ar: "ثَعْلَب",
           en: "Tha‘lab",
-          meaning: "Fox 🦊",
+          meaningEn: "Fox 🦊",
+          meaningMs: "Musang 🦊",
           audioWord: "ثَعْلَب"
         }
       },
@@ -2006,21 +2090,32 @@
         id: 5,
         letter: "ج",
         nameEn: "Jīm",
+        nameMs: "Jim",
         nameAr: "جِيم",
         translit: "j",
-        sound: "Soft 'j' as in 'jam' or 'joy'",
+        sound: {
+          en: "Soft 'j' as in 'jam' or 'joy'",
+          ms: "'j' lembut seperti 'jalan' atau 'jambu'"
+        },
         type: "moon",
         connector: true,
         isolated: "ج",
         initial: "جـ",
         medial: "ـجـ",
         final: "ـج",
-        makhraj: "Middle of the tongue pressed against the middle of the hard palate.",
-        phoneticTip: "Voiced post-alveolar affricate. In Modern Standard Arabic, pronounced like 'j'.",
+        makhraj: {
+          en: "Middle of the tongue pressed against the middle of the hard palate.",
+          ms: "Pertengahan lidah ditekan ke lelangit keras di bahagian atas."
+        },
+        phoneticTip: {
+          en: "Voiced post-alveolar affricate. In Modern Standard Arabic, pronounced like 'j'.",
+          ms: "Disebut dengan menyekat suara seketika sebelum dilepaskan dengan kemas."
+        },
         example: {
           ar: "جَمَل",
           en: "Jamal",
-          meaning: "Camel 🐪",
+          meaningEn: "Camel 🐪",
+          meaningMs: "Unta 🐪",
           audioWord: "جَمَل"
         }
       },
@@ -2028,21 +2123,32 @@
         id: 6,
         letter: "ح",
         nameEn: "Ḥā’",
+        nameMs: "Ha (Pedas)",
         nameAr: "حَاء",
         translit: "ḥ",
-        sound: "Deep raspy throat breath (warm exhaling)",
+        sound: {
+          en: "Deep raspy throat breath (warm exhaling)",
+          ms: "Nafas bersih dari tengah kerongkong (Ha pedas)"
+        },
         type: "moon",
         connector: true,
         isolated: "ح",
         initial: "حـ",
         medial: "ـحـ",
         final: "ـح",
-        makhraj: "Wasat al-Halq (Middle of the throat): tightening the pharynx.",
-        phoneticTip: "Imagine breathing out warm air to fog up cold spectacles or eyeglasses.",
+        makhraj: {
+          en: "Wasat al-Halq (Middle of the throat): tightening the pharynx.",
+          ms: "Wasatul Halqi (Tengah kerongkong): menghembus nafas bersih dengan menyempitkan tekak."
+        },
+        phoneticTip: {
+          en: "Imagine breathing out warm air to fog up cold spectacles or eyeglasses.",
+          ms: "Umpama menghembus wap nafas suam untuk mengelap cermin mata."
+        },
         example: {
           ar: "حِصَان",
           en: "Ḥiṣān",
-          meaning: "Horse 🐎",
+          meaningEn: "Horse 🐎",
+          meaningMs: "Kuda 🐎",
           audioWord: "حِصَان"
         }
       },
@@ -2050,21 +2156,32 @@
         id: 7,
         letter: "خ",
         nameEn: "Khā’",
+        nameMs: "Kha",
         nameAr: "خَاء",
         translit: "kh",
-        sound: "Like 'ch' in Scottish 'loch' or German 'Bach'",
+        sound: {
+          en: "Like 'ch' in Scottish 'loch' or German 'Bach'",
+          ms: "Bunyi 'kh' seperti berdengkur halus atau 'khamis'"
+        },
         type: "moon",
         connector: true,
         isolated: "خ",
         initial: "خـ",
         medial: "ـخـ",
         final: "ـخ",
-        makhraj: "Adna al-Halq (Upper throat, near the uvula and soft palate).",
-        phoneticTip: "Unvoiced velar/uvular fricative, produced by gentle friction at back of palate.",
+        makhraj: {
+          en: "Adna al-Halq (Upper throat, near the uvula and soft palate).",
+          ms: "Adnal Halqi (Hujung kerongkong teratas berdekatan anak tekak)."
+        },
+        phoneticTip: {
+          en: "Unvoiced velar/uvular fricative, produced by gentle friction at back of palate.",
+          ms: "Huruf tebal (Isti'la) dengan getaran udara lembut di lelangit lembut."
+        },
         example: {
           ar: "خُبْز",
           en: "Khubz",
-          meaning: "Bread 🥖",
+          meaningEn: "Bread 🥖",
+          meaningMs: "Roti 🥖",
           audioWord: "خُبْز"
         }
       },
@@ -2072,21 +2189,32 @@
         id: 8,
         letter: "د",
         nameEn: "Dāl",
+        nameMs: "Dal",
         nameAr: "دَال",
         translit: "d",
-        sound: "Like 'd' in 'door'",
+        sound: {
+          en: "Like 'd' in 'door'",
+          ms: "'d' nipis seperti 'daun' atau 'datuk'"
+        },
         type: "sun",
         connector: false,
         isolated: "د",
         initial: "د",
         medial: "ـد",
         final: "ـد",
-        makhraj: "Tip of the tongue touching the gum line of the upper central incisors.",
-        phoneticTip: "Light dental 'd'. Notice it is a non-connecting letter!",
+        makhraj: {
+          en: "Tip of the tongue touching the gum line of the upper central incisors.",
+          ms: "Hujung lidah bertemu pangkal gusi gigi kapak atas."
+        },
+        phoneticTip: {
+          en: "Light dental 'd'. Notice it is a non-connecting letter!",
+          ms: "Sebutan nipis. Merupakan salah satu daripada 6 huruf tidak bersambung ke hadapan."
+        },
         example: {
           ar: "دُبّ",
           en: "Dubb",
-          meaning: "Bear 🐻",
+          meaningEn: "Bear 🐻",
+          meaningMs: "Beruang 🐻",
           audioWord: "دُبّ"
         }
       },
@@ -2094,21 +2222,32 @@
         id: 9,
         letter: "ذ",
         nameEn: "Dhāl",
+        nameMs: "Dzal",
         nameAr: "ذَال",
         translit: "dh",
-        sound: "Voiced 'th' as in 'this', 'father', 'feather'",
+        sound: {
+          en: "Voiced 'th' as in 'this', 'father', 'feather'",
+          ms: "Bunyi 'dz' lembut bergetar, lidah di celah gigi"
+        },
         type: "sun",
         connector: false,
         isolated: "ذ",
         initial: "ذ",
         medial: "ـذ",
         final: "ـذ",
-        makhraj: "Tip of the tongue lightly touching the edges of the upper front teeth.",
-        phoneticTip: "Voiced counterpart of ث (Thā’); vocal cords vibrate as you pronounce it.",
+        makhraj: {
+          en: "Tip of the tongue lightly touching the edges of the upper front teeth.",
+          ms: "Hujung lidah diletakkan pada hujung mata gigi kapak hadapan."
+        },
+        phoneticTip: {
+          en: "Voiced counterpart of ث (Thā’); vocal cords vibrate as you pronounce it.",
+          ms: "Pasangan bersuara kepada huruf Tsa (ث), pita suara bergetar."
+        },
         example: {
           ar: "ذِئْب",
           en: "Dhi’b",
-          meaning: "Wolf 🐺",
+          meaningEn: "Wolf 🐺",
+          meaningMs: "Serigala 🐺",
           audioWord: "ذِئْب"
         }
       },
@@ -2116,21 +2255,32 @@
         id: 10,
         letter: "ر",
         nameEn: "Rā’",
+        nameMs: "Ra",
         nameAr: "رَاء",
         translit: "r",
-        sound: "Rolled / tapped 'r' as in Spanish 'pero'",
+        sound: {
+          en: "Rolled / tapped 'r' as in Spanish 'pero'",
+          ms: "Getaran lidah 'r' yang kemas dan berulang singkat"
+        },
         type: "sun",
         connector: false,
         isolated: "ر",
         initial: "ر",
         medial: "ـر",
         final: "ـر",
-        makhraj: "Tip of the tongue tapping the palate just behind upper teeth.",
-        phoneticTip: "Quick single tap of the tongue, crisp and vibrant.",
+        makhraj: {
+          en: "Tip of the tongue tapping the palate just behind upper teeth.",
+          ms: "Hujung lidah berhampiran lelangit hadapan di belakang gusi atas."
+        },
+        phoneticTip: {
+          en: "Quick single tap of the tongue, crisp and vibrant.",
+          ms: "Getaran lidah sederhana (Takrir) tanpa getaran berlebihan."
+        },
         example: {
           ar: "رُمَّان",
           en: "Rummān",
-          meaning: "Pomegranate 🍎",
+          meaningEn: "Pomegranate 🍎",
+          meaningMs: "Buah Delima 🍎",
           audioWord: "رُمَّان"
         }
       },
@@ -2138,21 +2288,32 @@
         id: 11,
         letter: "ز",
         nameEn: "Zāy",
+        nameMs: "Zai",
         nameAr: "زَاي",
         translit: "z",
-        sound: "Buzzing 'z' as in 'zebra'",
+        sound: {
+          en: "Buzzing 'z' as in 'zebra'",
+          ms: "Bunyi 'z' mendesir seperti dengungan lebah"
+        },
         type: "sun",
         connector: false,
         isolated: "ز",
         initial: "ز",
         medial: "ـز",
         final: "ـز",
-        makhraj: "Tip of the tongue positioned just above the lower front incisors.",
-        phoneticTip: "Clear buzzing whistle (Safīr), identical to English 'z'.",
+        makhraj: {
+          en: "Tip of the tongue positioned just above the lower front incisors.",
+          ms: "Hujung lidah diletakkan di atas mata gigi kapak sebelah bawah."
+        },
+        phoneticTip: {
+          en: "Clear buzzing whistle (Safīr), identical to English 'z'.",
+          ms: "Mempunyai sifat Safir (bunyi desiran tajam yang kuat)."
+        },
         example: {
           ar: "زَرَافَة",
           en: "Zarāfah",
-          meaning: "Giraffe 🦒",
+          meaningEn: "Giraffe 🦒",
+          meaningMs: "Zirafah 🦒",
           audioWord: "زَرَافَة"
         }
       },
@@ -2160,21 +2321,32 @@
         id: 12,
         letter: "س",
         nameEn: "Sīn",
+        nameMs: "Sin",
         nameAr: "سِين",
         translit: "s",
-        sound: "Crisp 's' as in 'sun' or 'sea'",
+        sound: {
+          en: "Crisp 's' as in 'sun' or 'sea'",
+          ms: "'s' nipis dan tajam seperti 'saya' atau 'susu'"
+        },
         type: "sun",
         connector: true,
         isolated: "س",
         initial: "سـ",
         medial: "ـسـ",
         final: "ـس",
-        makhraj: "Tip of the tongue just behind the edges of the lower front teeth.",
-        phoneticTip: "Light, clear whistling sound without deep guttural coloring.",
+        makhraj: {
+          en: "Tip of the tongue just behind the edges of the lower front teeth.",
+          ms: "Hujung lidah berada di belakang gigi kapak bawah dengan udara berdesir."
+        },
+        phoneticTip: {
+          en: "Light, clear whistling sound without deep guttural coloring.",
+          ms: "Huruf nipis berdesir (Safir & Hams) tanpa menebalkan mulut."
+        },
         example: {
           ar: "سَمَكَة",
           en: "Samakah",
-          meaning: "Fish 🐟",
+          meaningEn: "Fish 🐟",
+          meaningMs: "Ikan 🐟",
           audioWord: "سَمَكَة"
         }
       },
@@ -2182,21 +2354,32 @@
         id: 13,
         letter: "ش",
         nameEn: "Shīn",
+        nameMs: "Syin",
         nameAr: "شِين",
         translit: "sh",
-        sound: "Soft 'sh' as in 'shoe' or 'shine'",
+        sound: {
+          en: "Soft 'sh' as in 'shoe' or 'shine'",
+          ms: "Bunyi 'sy' berhamburan angin (seperti 'syukur')"
+        },
         type: "sun",
         connector: true,
         isolated: "ش",
         initial: "شـ",
         medial: "ـشـ",
         final: "ـش",
-        makhraj: "Middle of the tongue slightly elevated towards the roof of the mouth.",
-        phoneticTip: "Spread of breath (Tafashshī) through the mouth.",
+        makhraj: {
+          en: "Middle of the tongue slightly elevated towards the roof of the mouth.",
+          ms: "Pertengahan lidah terangkat menghadap lelangit atas."
+        },
+        phoneticTip: {
+          en: "Spread of breath (Tafashshī) through the mouth.",
+          ms: "Sifat Tafasysyi: angin berhamburan memenuhi ruang dalam mulut."
+        },
         example: {
           ar: "شَمْس",
           en: "Shams",
-          meaning: "Sun ☀️",
+          meaningEn: "Sun ☀️",
+          meaningMs: "Matahari ☀️",
           audioWord: "شَمْس"
         }
       },
@@ -2204,21 +2387,32 @@
         id: 14,
         letter: "ص",
         nameEn: "Ṣād",
+        nameMs: "Shad (Sod)",
         nameAr: "صَاد",
         translit: "ṣ",
-        sound: "Deep emphatic 'S' with back of tongue raised",
+        sound: {
+          en: "Deep emphatic 'S' with back of tongue raised",
+          ms: "'s' tebal & bulat (angkat pangkal lidah ke lelangit)"
+        },
         type: "sun",
         connector: true,
         isolated: "ص",
         initial: "صـ",
         medial: "ـصـ",
         final: "ـص",
-        makhraj: "Same tongue tip placement as س, but back of tongue is elevated (Isti‘lā’).",
-        phoneticTip: "Heavy, resonant 'S'. Darker timbre like 's' in 'sauce' or 'sought'.",
+        makhraj: {
+          en: "Same tongue tip placement as س, but back of tongue is elevated (Isti‘lā’).",
+          ms: "Hujung lidah seperti Sin, tetapi pangkal lidah terangkat ke lelangit (Isti'la & Itbaq)."
+        },
+        phoneticTip: {
+          en: "Heavy, resonant 'S'. Darker timbre like 's' in 'sauce'.",
+          ms: "Bunyi desiran tebal bergema di dalam mulut."
+        },
         example: {
           ar: "صَقْر",
           en: "Ṣaqr",
-          meaning: "Falcon 🦅",
+          meaningEn: "Falcon 🦅",
+          meaningMs: "Burung Helang 🦅",
           audioWord: "صَقْر"
         }
       },
@@ -2226,21 +2420,32 @@
         id: 15,
         letter: "ض",
         nameEn: "Ḍād",
+        nameMs: "Dhad (Dhod)",
         nameAr: "ضَاد",
         translit: "ḍ",
-        sound: "Emphatic deep 'D' (Iconic Arabic letter)",
+        sound: {
+          en: "Emphatic deep 'D' (Iconic Arabic letter)",
+          ms: "'dh' tebal berat (huruf lambang keistimewaan bahasa Arab)"
+        },
         type: "sun",
         connector: true,
         isolated: "ض",
         initial: "ضـ",
         medial: "ـضـ",
         final: "ـض",
-        makhraj: "One or both edges of the tongue pressed firmly against upper molars.",
-        phoneticTip: "The hallmark of Arabic ('Lughat al-Ḍād'). Deep, heavy, emphatic 'D'.",
+        makhraj: {
+          en: "One or both edges of the tongue pressed firmly against upper molars.",
+          ms: "Tepi/rusuk lidah ditekan rapat pada gigi geraham atas (kiri, kanan, atau kedua-duanya)."
+        },
+        phoneticTip: {
+          en: "The hallmark of Arabic ('Lughat al-Ḍād'). Deep, heavy, emphatic 'D'.",
+          ms: "Mempunyai sifat Istitalah (suara memanjang di sepanjang tepi lidah)."
+        },
         example: {
           ar: "ضِفْدَع",
           en: "Ḍifda‘",
-          meaning: "Frog 🐸",
+          meaningEn: "Frog 🐸",
+          meaningMs: "Katak 🐸",
           audioWord: "ضِفْدَع"
         }
       },
@@ -2248,21 +2453,32 @@
         id: 16,
         letter: "ط",
         nameEn: "Ṭā’",
+        nameMs: "Tha (Tho)",
         nameAr: "طَاء",
         translit: "ṭ",
-        sound: "Heavy emphatic 'T' with back of mouth arched",
+        sound: {
+          en: "Heavy emphatic 'T' with back of mouth arched",
+          ms: "'t' tebal berdentum dengan rongga mulut melengkung"
+        },
         type: "sun",
         connector: true,
         isolated: "ط",
         initial: "طـ",
         medial: "ـطـ",
         final: "ـط",
-        makhraj: "Tongue tip at roots of upper incisors while back of tongue cups the roof.",
-        phoneticTip: "Much deeper and more explosive than regular ت (Tā’).",
+        makhraj: {
+          en: "Tongue tip at roots of upper incisors while back of tongue cups the roof.",
+          ms: "Hujung lidah pada pangkal gigi kapak atas dengan pangkal lidah dinaikkan rapat."
+        },
+        phoneticTip: {
+          en: "Much deeper and more explosive than regular ت (Tā’).",
+          ms: "Huruf paling kuat dan tebal dalam abjad Arab, juga bersifat Qalqalah ketika sukun."
+        },
         example: {
           ar: "طَيَّارَة",
           en: "Ṭayyārah",
-          meaning: "Airplane ✈️",
+          meaningEn: "Airplane ✈️",
+          meaningMs: "Kapal Terbang ✈️",
           audioWord: "طَيَّارَة"
         }
       },
@@ -2270,21 +2486,32 @@
         id: 17,
         letter: "ظ",
         nameEn: "Ẓā’",
+        nameMs: "Zha (Zho)",
         nameAr: "ظَاء",
         translit: "ẓ",
-        sound: "Deep emphatic voiced 'th' as in 'those' / 'this'",
+        sound: {
+          en: "Deep emphatic voiced 'th' as in 'those' / 'this'",
+          ms: "'zh' tebal berdengung di celah gigi"
+        },
         type: "sun",
         connector: true,
         isolated: "ظ",
         initial: "ظـ",
         medial: "ـظـ",
         final: "ـظ",
-        makhraj: "Tip of tongue against edges of upper incisors with back of tongue raised.",
-        phoneticTip: "The heavy, emphatic version of ذ (Dhāl).",
+        makhraj: {
+          en: "Tip of tongue against edges of upper incisors with back of tongue raised.",
+          ms: "Hujung lidah pada hujung gigi kapak atas dengan pangkal lidah terangkat tebal."
+        },
+        phoneticTip: {
+          en: "The heavy, emphatic version of ذ (Dhāl).",
+          ms: "Bentuk tebal (Isti'la & Itbaq) bagi huruf Dzal (ذ)."
+        },
         example: {
           ar: "ظَرْف",
           en: "Ẓarf",
-          meaning: "Envelope ✉️",
+          meaningEn: "Envelope ✉️",
+          meaningMs: "Sampul Surat ✉️",
           audioWord: "ظَرْف"
         }
       },
@@ -2292,21 +2519,32 @@
         id: 18,
         letter: "ع",
         nameEn: "‘Ayn",
+        nameMs: "‘Ain",
         nameAr: "عَيْن",
         translit: "‘",
-        sound: "Deep pharyngeal voiced contraction from throat",
+        sound: {
+          en: "Deep pharyngeal voiced contraction from throat",
+          ms: "Bunyi tekak dalam yang kemas dari tengah kerongkong"
+        },
         type: "moon",
         connector: true,
         isolated: "ع",
         initial: "عـ",
         medial: "ـعـ",
         final: "ـع",
-        makhraj: "Wasat al-Halq (Middle throat): gentle squeeze of the epiglottis.",
-        phoneticTip: "No English equivalent. Squeeze the throat slightly while voicing 'ah'.",
+        makhraj: {
+          en: "Wasat al-Halq (Middle throat): gentle squeeze of the epiglottis.",
+          ms: "Wasatul Halqi (Tengah kerongkong di bahagian halkum): mampatan lembut saluran udara."
+        },
+        phoneticTip: {
+          en: "No English equivalent. Squeeze the throat slightly while voicing 'ah'.",
+          ms: "Bukan bunyi 'A' biasa; ia ditekan sedikit di halkum tanpa menyekat habis."
+        },
         example: {
           ar: "عَيْن",
           en: "‘Ayn",
-          meaning: "Eye 👁️",
+          meaningEn: "Eye 👁️",
+          meaningMs: "Mata 👁️",
           audioWord: "عَيْن"
         }
       },
@@ -2314,21 +2552,32 @@
         id: 19,
         letter: "غ",
         nameEn: "Ghayn",
+        nameMs: "Ghain",
         nameAr: "غَيْن",
         translit: "gh",
-        sound: "Gargled 'r' sound like Parisian French 'r'",
+        sound: {
+          en: "Gargled 'r' sound like Parisian French 'r'",
+          ms: "Bunyi 'gh' seperti berkumur-kumur lembut"
+        },
         type: "moon",
         connector: true,
         isolated: "غ",
         initial: "غـ",
         medial: "ـغـ",
         final: "ـغ",
-        makhraj: "Adna al-Halq (Top of throat, where uvula hangs).",
-        phoneticTip: "Voiced counterpart of خ (Khā’). Similar to gentle water gargling.",
+        makhraj: {
+          en: "Adna al-Halq (Top of throat, where uvula hangs).",
+          ms: "Adnal Halqi (Atas kerongkong berhampiran anak tekak): getaran suara cecair."
+        },
+        phoneticTip: {
+          en: "Voiced counterpart of خ (Khā’). Similar to gentle water gargling.",
+          ms: "Pasangan bersuara kepada Kha (خ). Seperti 'gh' dalam dialek utara atau 'ghaib'."
+        },
         example: {
           ar: "غَزَال",
           en: "Ghazāl",
-          meaning: "Gazelle 🦌",
+          meaningEn: "Gazelle 🦌",
+          meaningMs: "Rusa / Kijang 🦌",
           audioWord: "غَزَال"
         }
       },
@@ -2336,21 +2585,32 @@
         id: 20,
         letter: "ف",
         nameEn: "Fā’",
+        nameMs: "Fa",
         nameAr: "فَاء",
         translit: "f",
-        sound: "Soft 'f' as in 'flower' or 'friend'",
+        sound: {
+          en: "Soft 'f' as in 'flower' or 'friend'",
+          ms: "'f' lembut seperti 'filem' atau 'fikir'"
+        },
         type: "moon",
         connector: true,
         isolated: "ف",
         initial: "فـ",
         medial: "ـفـ",
         final: "ـف",
-        makhraj: "Edges of upper front teeth resting on inner wet surface of bottom lip.",
-        phoneticTip: "Light voiceless labiodental fricative, same as English F.",
+        makhraj: {
+          en: "Edges of upper front teeth resting on inner wet surface of bottom lip.",
+          ms: "Mata gigi kapak atas bertemu dengan bahagian perut bibir bawah."
+        },
+        phoneticTip: {
+          en: "Light voiceless labiodental fricative, same as English F.",
+          ms: "Konsonan bibir-gigi berangin yang ringan dan bersahaja."
+        },
         example: {
           ar: "فِيل",
           en: "Fīl",
-          meaning: "Elephant 🐘",
+          meaningEn: "Elephant 🐘",
+          meaningMs: "Gajah 🐘",
           audioWord: "فِيل"
         }
       },
@@ -2358,21 +2618,32 @@
         id: 21,
         letter: "ق",
         nameEn: "Qāf",
+        nameMs: "Qaf",
         nameAr: "قَاف",
         translit: "q",
-        sound: "Deep guttural 'k' produced at very back of throat",
+        sound: {
+          en: "Deep guttural 'k' produced at very back of throat",
+          ms: "'q' tebal di pangkal tekak anak tekak"
+        },
         type: "moon",
         connector: true,
         isolated: "ق",
         initial: "قـ",
         medial: "ـقـ",
         final: "ـق",
-        makhraj: "Aqsa al-Lisan (Deepest back of tongue against the uvula/soft palate).",
-        phoneticTip: "Deep popping 'k'. Further back in the throat than the English K.",
+        makhraj: {
+          en: "Aqsa al-Lisan (Deepest back of tongue against the uvula/soft palate).",
+          ms: "Aqsal Lisan (Pangkal lidah paling belakang menekan lelangit lembut anak tekak)."
+        },
+        phoneticTip: {
+          en: "Deep popping 'k'. Further back in the throat than the English K.",
+          ms: "Huruf tebal lantang, menghasilkan Qalqalah (pantulan bunyi) bila sukun."
+        },
         example: {
           ar: "قَمَر",
           en: "Qamar",
-          meaning: "Moon 🌙",
+          meaningEn: "Moon 🌙",
+          meaningMs: "Bulan 🌙",
           audioWord: "قَمَر"
         }
       },
@@ -2380,21 +2651,32 @@
         id: 22,
         letter: "ك",
         nameEn: "Kāf",
+        nameMs: "Kaf",
         nameAr: "كَاف",
         translit: "k",
-        sound: "Crisp 'k' as in 'king' or 'kite'",
+        sound: {
+          en: "Crisp 'k' as in 'king' or 'kite'",
+          ms: "'k' ringan berangin seperti 'kita' atau 'kucing'"
+        },
         type: "moon",
         connector: true,
         isolated: "ك",
         initial: "كـ",
         medial: "ـكـ",
         final: "ـك",
-        makhraj: "Back of the tongue touching the hard palate (forward from Qaf).",
-        phoneticTip: "Clear voiceless velar stop, matches English 'k'.",
+        makhraj: {
+          en: "Back of the tongue touching the hard palate (forward from Qaf).",
+          ms: "Pangkal lidah sedikit ke depan daripada Qaf, bertemu lelangit keras."
+        },
+        phoneticTip: {
+          en: "Clear voiceless velar stop, matches English 'k'.",
+          ms: "Huruf nipis berangin (Hamas) yang dilepaskan dengan ringan."
+        },
         example: {
           ar: "كِتَاب",
           en: "Kitāb",
-          meaning: "Book 📖",
+          meaningEn: "Book 📖",
+          meaningMs: "Buku / Kitab 📖",
           audioWord: "كِتَاب"
         }
       },
@@ -2402,21 +2684,32 @@
         id: 23,
         letter: "ل",
         nameEn: "Lām",
+        nameMs: "Lam",
         nameAr: "لَام",
         translit: "l",
-        sound: "Clear 'l' as in 'light' or 'lemon'",
+        sound: {
+          en: "Clear 'l' as in 'light' or 'lemon'",
+          ms: "'l' lembut seperti 'lampu' atau 'laluan'"
+        },
         type: "sun",
         connector: true,
         isolated: "ل",
         initial: "لـ",
         medial: "ـلـ",
         final: "ـل",
-        makhraj: "Sides and front of the tongue against the upper gum ridge.",
-        phoneticTip: "Light dental 'l' (except in the majestic name Allāh after fat-ha/damma).",
+        makhraj: {
+          en: "Sides and front of the tongue against the upper gum ridge.",
+          ms: "Hujung tepi lidah bertemu dengan gusi hadapan gigi atas."
+        },
+        phoneticTip: {
+          en: "Light dental 'l' (except in the majestic name Allāh after fat-ha/damma).",
+          ms: "Sebutan nipis (Tarqiq), kecuali pada lafaz jalalah 'Allah' bila didahului baris atas/depan."
+        },
         example: {
           ar: "لَيْمُون",
           en: "Laymūn",
-          meaning: "Lemon 🍋",
+          meaningEn: "Lemon 🍋",
+          meaningMs: "Lemon / Limau 🍋",
           audioWord: "لَيْمُون"
         }
       },
@@ -2424,21 +2717,32 @@
         id: 24,
         letter: "م",
         nameEn: "Mīm",
+        nameMs: "Mim",
         nameAr: "مِيم",
         translit: "m",
-        sound: "Gentle 'm' as in 'moon'",
+        sound: {
+          en: "Gentle 'm' as in 'moon'",
+          ms: "'m' bersuara dengung lembut dua bibir"
+        },
         type: "moon",
         connector: true,
         isolated: "م",
         initial: "مـ",
         medial: "ـمـ",
         final: "ـم",
-        makhraj: "Both lips closing softly together, accompanied by nasal resonance (Ghunnah).",
-        phoneticTip: "Voiced bilabial nasal; matches the English M.",
+        makhraj: {
+          en: "Both lips closing softly together, accompanied by nasal resonance (Ghunnah).",
+          ms: "Pertemuan dua bibir mulut berserta getaran dengung rongga hidung (Ghunnah)."
+        },
+        phoneticTip: {
+          en: "Voiced bilabial nasal; matches the English M.",
+          ms: "Konsonan bibir berdengung yang sangat sinonim dengan bahasa Melayu."
+        },
         example: {
           ar: "مَسْجِد",
           en: "Masjid",
-          meaning: "Mosque 🕌",
+          meaningEn: "Mosque 🕌",
+          meaningMs: "Masjid 🕌",
           audioWord: "مَسْجِد"
         }
       },
@@ -2446,21 +2750,32 @@
         id: 25,
         letter: "ن",
         nameEn: "Nūn",
+        nameMs: "Nun",
         nameAr: "نُون",
         translit: "n",
-        sound: "Crisp 'n' as in 'noon' or 'night'",
+        sound: {
+          en: "Crisp 'n' as in 'noon' or 'night'",
+          ms: "'n' dengung seperti 'nasi' atau 'nama'"
+        },
         type: "sun",
         connector: true,
         isolated: "ن",
         initial: "نـ",
         medial: "ـنـ",
         final: "ـن",
-        makhraj: "Tip of the tongue touching upper gums, accompanied by nasal hum.",
-        phoneticTip: "Voiced alveolar nasal, exactly like the English N.",
+        makhraj: {
+          en: "Tip of the tongue touching upper gums, accompanied by nasal hum.",
+          ms: "Hujung lidah bertemu gusi gigi atas dengan dengung di hidung (Khaisyum)."
+        },
+        phoneticTip: {
+          en: "Voiced alveolar nasal, exactly like the English N.",
+          ms: "Asas kepada hukum-hukum Tajwid Nun Sakinah dan Tanwin."
+        },
         example: {
           ar: "نَجْم",
           en: "Najm",
-          meaning: "Star ⭐",
+          meaningEn: "Star ⭐",
+          meaningMs: "Bintang ⭐",
           audioWord: "نَجْم"
         }
       },
@@ -2468,21 +2783,32 @@
         id: 26,
         letter: "ه",
         nameEn: "Hā’",
+        nameMs: "Ha (Simpul)",
         nameAr: "هَاء",
         translit: "h",
-        sound: "Soft breath 'h' as in 'heart' or 'hello'",
+        sound: {
+          en: "Soft breath 'h' as in 'heart' or 'hello'",
+          ms: "'h' halus dan lapang dari pangkal dada/tekak"
+        },
         type: "moon",
         connector: true,
         isolated: "ه",
         initial: "هـ",
         medial: "ـهـ",
         final: "ـه",
-        makhraj: "Aqsa al-Halq (Deepest throat at vocal cords).",
-        phoneticTip: "Soft and effortless sigh, much lighter and softer than ḥā’ (ح).",
+        makhraj: {
+          en: "Aqsa al-Halq (Deepest throat at vocal cords).",
+          ms: "Aqsal Halqi (Pangkal kerongkong paling dalam berdekatan pita suara)."
+        },
+        phoneticTip: {
+          en: "Soft and effortless sigh, much lighter and softer than ḥā’ (ح).",
+          ms: "Jauh lebih lembut dan lapang daripada Ha pedas (ح); seperti hembusan lega."
+        },
         example: {
           ar: "هِلَال",
           en: "Hilāl",
-          meaning: "Crescent 🌙",
+          meaningEn: "Crescent 🌙",
+          meaningMs: "Anak Bulan / Bulan Sabit 🌙",
           audioWord: "هِلَال"
         }
       },
@@ -2490,21 +2816,32 @@
         id: 27,
         letter: "و",
         nameEn: "Wāw",
+        nameMs: "Wau",
         nameAr: "وَاو",
         translit: "w / ū",
-        sound: "Like 'w' in 'water' or long 'oo' in 'moon'",
+        sound: {
+          en: "Like 'w' in 'water' or long 'oo' in 'moon'",
+          ms: "Membulatkan bibir seperti 'wau' atau vokal 'uu'"
+        },
         type: "moon",
         connector: false,
         isolated: "و",
         initial: "و",
         medial: "ـو",
         final: "ـو",
-        makhraj: "Rounding the lips forward into an 'o' shape without teeth contact.",
-        phoneticTip: "Functions both as consonant 'w' and as the long vowel 'ū'. Non-connector!",
+        makhraj: {
+          en: "Rounding the lips forward into an 'o' shape without teeth contact.",
+          ms: "Muncungkan dua bibir ke depan membentuk bulatan tanpa sentuhan gigi."
+        },
+        phoneticTip: {
+          en: "Functions both as consonant 'w' and as the long vowel 'ū'. Non-connector!",
+          ms: "Boleh berfungsi sebagai konsonan 'w' atau vokal panjang 'uu'. Huruf tidak bersambung!"
+        },
         example: {
           ar: "وَرْدَة",
           en: "Wardah",
-          meaning: "Rose / Flower 🌹",
+          meaningEn: "Rose / Flower 🌹",
+          meaningMs: "Bunga Mawar 🌹",
           audioWord: "وَرْدَة"
         }
       },
@@ -2512,28 +2849,248 @@
         id: 28,
         letter: "ي",
         nameEn: "Yā’",
+        nameMs: "Ya",
         nameAr: "يَاء",
         translit: "y / ī",
-        sound: "Like 'y' in 'yes' or long 'ee' in 'green'",
+        sound: {
+          en: "Like 'y' in 'yes' or long 'ee' in 'green'",
+          ms: "'y' seperti 'yakin' atau vokal panjang 'ii'"
+        },
         type: "moon",
         connector: true,
         isolated: "ي",
         initial: "يـ",
         medial: "ـيـ",
         final: "ـي",
-        makhraj: "Middle of the tongue raised towards the palate.",
-        phoneticTip: "Functions both as consonant 'y' and as the long vowel 'ī'.",
+        makhraj: {
+          en: "Middle of the tongue raised towards the palate.",
+          ms: "Pertengahan lidah diangkat sedikit menghadap lelangit atas."
+        },
+        phoneticTip: {
+          en: "Functions both as consonant 'y' and as the long vowel 'ī'.",
+          ms: "Berfungsi sebagai konsonan 'y' atau vokal panjang 'ii'."
+        },
         example: {
           ar: "يَد",
           en: "Yad",
-          meaning: "Hand ✋",
+          meaningEn: "Hand ✋",
+          meaningMs: "Tangan ✋",
           audioWord: "يَد"
         }
       }
     ];
 
-    // App State
+    /**
+     * Multilingual UI Dictionary (English & Bahasa Melayu)
+     */
+    const I18N = {
+      en: {
+        pageTitle: "Learn Arabic Alphabet | Al-Abjadīyah - Alif to Ya",
+        brandTitle: "Al-Abjadīyah",
+        brandSubtitle: "Learn Arabic Alphabet: Alif to Ya",
+        tabGrid: "Alphabet Grid",
+        tabFlashcards: "Flashcards",
+        tabQuiz: "Quiz",
+        tabCanvas: "Writing Studio",
+        tabGuide: "Vowels & Rules",
+        heroBadge: "✨ Complete 28 Arabic Letters Guide",
+        heroTitleMain: "Master the Arabic Alphabet",
+        heroTitleAr: "حُرُوفُ الهِجَاء",
+        heroDesc: "From <strong>Alif (أ)</strong> to <strong>Ya (ي)</strong>. Listen to authentic pronunciations, explore how letter shapes connect, practice vocabulary words, and test your knowledge.",
+        statLetters: "Core Letters",
+        statForms: "Contextual Forms",
+        statSunMoon: "Sun & Moon Letters",
+        statAudio: "Audio Enabled",
+        searchPlaceholder: "Search by name, letter, or sound (e.g. Ba, ب, Falcon)...",
+        filterAll: "All Letters (28)",
+        filterSun: "☀️ Sun Letters (14)",
+        filterMoon: "🌙 Moon Letters (14)",
+        filterNonConn: "🔗 Non-Connectors (6)",
+        speedBtnText: "🔊 Speed:",
+        cardEg: "Eg:",
+        cardListen: "Listen",
+        sunLetter: "Sun Letter",
+        moonLetter: "Moon Letter",
+        sunBadge: "☀️ Sun",
+        moonBadge: "🌙 Moon",
+        nonConnBadge: "1-Way",
+        fullConnBadge: "Full Connector",
+        fcProgress: "Letter {current} of 28",
+        fcHint: "Click or press Space to reveal pronunciation & details",
+        fcPronounceBtnText: "Pronounce Letter",
+        fcPrevLabel: "Previous",
+        fcFlipLabel: "Flip Card",
+        fcShuffleLabel: "Shuffle",
+        fcNextLabel: "Next",
+        quizHeaderTitle: "Knowledge Check",
+        quizScorePrefix: "Score:",
+        quizQuestionCount: "Question {current} / 10",
+        quizNextBtnLabel: "Next Question",
+        quizRestartBtnLabel: "Restart Quiz",
+        quizComplete: "Quiz Complete!",
+        quizFinalScore: "Final Score:",
+        quizCorrect: "✨ Correct! Excellent work!",
+        quizIncorrect: "Incorrect! The correct answer was",
+        quizQName: "What is the name of this character:",
+        quizQInitial: "What is the INITIAL form of this letter:",
+        quizQSound: "Listen to the letter and select the matching Arabic character:",
+        canvasTitle: "Arabic Letter Tracing Canvas",
+        canvasDesc: "Practice calligraphy stroke flow. Arabic is written gracefully from right to left.",
+        canvasSelectLabel: "Select Letter:",
+        canvasColorLabel: "Ink Color:",
+        canvasBrushLabel: "Brush:",
+        canvasGuideOn: "👁️ Guide: ON",
+        canvasGuideOff: "👁️ Guide: OFF",
+        canvasHearBtnText: "🔊 Hear Letter",
+        canvasClearBtnText: "Clear",
+        guideHarakatTitle: "<span>✨</span> The Short Vowels (الحَرَكَات - Harakāt)",
+        guideHarakatDesc: "In Arabic, core letters are consonants or long vowels. Short vowel marks (tashkeel) are placed above or below letters to determine their exact vocalization.",
+        hNameFatha: "Fatha (فَتْحَة)",
+        hSoundFatha: "Short \"a\" sound (like 'u' in 'cup')",
+        hDescFatha: "A small diagonal slash placed <em>above</em> the letter. Makes an open 'a' sound (e.g. دَ = \"Da\").",
+        hNameKasra: "Kasra (كَسْرَة)",
+        hSoundKasra: "Short \"i\" sound (like 'i' in 'bit')",
+        hDescKasra: "A small diagonal slash placed <em>below</em> the letter. Makes a short 'ee/i' sound (e.g. دِ = \"Di\").",
+        hNameDamma: "Damma (ضَمَّة)",
+        hSoundDamma: "Short \"u\" sound (like 'oo' in 'book')",
+        hDescDamma: "A miniature loop resembling a tiny Waw placed <em>above</em> the letter. Makes a rounded 'u' sound (e.g. دُ = \"Du\").",
+        hNameSukun: "Sukun (سُكُون)",
+        hSoundSukun: "Zero vowel / Stop",
+        hDescSukun: "A tiny circle placed <em>above</em> the letter indicating the absence of any vowel. The consonant sound stops cleanly (e.g. دْ = \"D\").",
+        guideShaddahTitle: "<span>⚡</span> Shaddah & Tanwin (Doubling & Nunation)",
+        hNameShaddah: "Shaddah (شَدَّة)",
+        hSoundShaddah: "Consonant Doubling / Emphasis",
+        hDescShaddah: "Looks like a small 'w'. It tells you to pronounce the letter twice with extra strength and duration, holding the consonant before releasing it.",
+        hNameTanwin: "Tanwin (تَنْوِين)",
+        hSoundTanwin: "Nunation (-an, -in, -un)",
+        hDescTanwin: "Doubling of the vowel marks at the end of indefinite nouns, adding an 'n' sound: Fathatayn (-an), Kasratayn (-in), and Dammatayn (-un).",
+        guideRulesTitle: "<span>☀️ 🌙</span> Vital Arabic Orthography Rules",
+        sunLettersTitle: "☀️ Sun Letters (الحُرُوفُ الشَّمْسِيَّة)",
+        sunLettersDesc: "When the definite article <strong>Al- (الـ)</strong> precedes a Sun letter, the 'L' sound assimilates into the letter, which takes a Shaddah (e.g., <em>ash-shams</em> instead of <em>al-shams</em>).",
+        moonLettersTitle: "🌙 Moon Letters (الحُرُوفُ القَمَرِيَّة)",
+        moonLettersDesc: "When <strong>Al- (الـ)</strong> precedes a Moon letter, the 'L' sound is pronounced clearly and distinctly (e.g., <em>al-qamar</em>).",
+        nonConnectorsTitle: "🔗 The 6 Non-Connecting Letters (حُرُوفُ الفَصْل)",
+        nonConnectorsDesc: "These 6 unique letters connect to the preceding letter (from the right), but <strong>never connect to the letter after them</strong> (to the left). Any letter following them must start in its isolated or initial form!",
+        modalFormsLabel: "Contextual Letter Forms (أَشْكَالُ الحَرْف)",
+        lblFormIsolated: "Isolated",
+        lblFormInitial: "Initial",
+        lblFormMedial: "Medial",
+        lblFormFinal: "Final",
+        modalMakhrajLabel: "Pronunciation & Makhraj (مَخْرَجُ الحَرْف)",
+        modalVocabLabel: "Example Vocabulary Word",
+        modalPronounceBtnText: "Pronounce Letter",
+        modalTraceBtnText: "✍️ Practice Writing",
+        footerQuote: "« طَلَبُ العِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ »",
+        footerSubtitle: "Interactive Arabic Learning Application • 28 Letters from Alif to Ya",
+        footerCrafted: "Crafted with authentic Arabic typography and responsive Web Audio API integration.",
+        footerCrafted: "Copyright © Harun DM"
+      },
+      ms: {
+        pageTitle: "Belajar Huruf Hijaiyah | Al-Abjadīyah - Alif hingga Ya",
+        brandTitle: "Al-Abjadīyah",
+        brandSubtitle: "Belajar Huruf Hijaiyah: Alif hingga Ya",
+        tabGrid: "Carta Hijaiyah",
+        tabFlashcards: "Kad Imbasan",
+        tabQuiz: "Ujian Kuiz",
+        tabCanvas: "Studio Tulisan",
+        tabGuide: "Baris & Kaedah",
+        heroBadge: "✨ Panduan Lengkap 28 Huruf Hijaiyah",
+        heroTitleMain: "Kuasai Huruf Hijaiyah",
+        heroTitleAr: "حُرُوفُ الهِجَاء",
+        heroDesc: "Daripada <strong>Alif (أ)</strong> hingga <strong>Ya (ي)</strong>. Dengarkan sebutan makhraj yang sahih, pelajari bentuk sambungan huruf, contoh kosa kata harian, dan uji kefahaman anda.",
+        statLetters: "Huruf Asas",
+        statForms: "Bentuk Sambungan",
+        statSunMoon: "Huruf Syamsiah & Qamariah",
+        statAudio: "Bersuara (Audio)",
+        searchPlaceholder: "Cari nama huruf, perkataan, atau sebutan (cth: Ba, ب, Helang)...",
+        filterAll: "Semua Huruf (28)",
+        filterSun: "☀️ Huruf Syamsiah (14)",
+        filterMoon: "🌙 Huruf Qamariah (14)",
+        filterNonConn: "🔗 Huruf Pemutus (6)",
+        speedBtnText: "🔊 Kelajuan:",
+        cardEg: "Cth:",
+        cardListen: "Dengar",
+        sunLetter: "Huruf Syamsiah",
+        moonLetter: "Huruf Qamariah",
+        sunBadge: "☀️ Syamsiah",
+        moonBadge: "🌙 Qamariah",
+        nonConnBadge: "1-Arah",
+        fullConnBadge: "Boleh Bersambung",
+        fcProgress: "Huruf {current} daripada 28",
+        fcHint: "Klik atau tekan Ruang (Space) untuk melihat sebutan & maklumat",
+        fcPronounceBtnText: "Sebutan Huruf",
+        fcPrevLabel: "Sebelum",
+        fcFlipLabel: "Pusing Kad",
+        fcShuffleLabel: "Rawak (Shuffle)",
+        fcNextLabel: "Seterusnya",
+        quizHeaderTitle: "Ujian Pengetahuan",
+        quizScorePrefix: "Skor:",
+        quizQuestionCount: "Soalan {current} / 10",
+        quizNextBtnLabel: "Soalan Seterusnya",
+        quizRestartBtnLabel: "Mula Semula Kuiz",
+        quizComplete: "Kuiz Selesai!",
+        quizFinalScore: "Skor Akhir:",
+        quizCorrect: "✨ Tepat sekali! Jawapan anda betul!",
+        quizIncorrect: "Kurang tepat! Jawapan yang betul ialah",
+        quizQName: "Apakah nama bagi huruf ini:",
+        quizQInitial: "Apakah bentuk AWAL bagi huruf ini:",
+        quizQSound: "Dengarkan bunyi huruf dan pilih aksara yang sepadan:",
+        canvasTitle: "Kanvas Latihan Menulis Huruf Hijaiyah",
+        canvasDesc: "Latih kemahiran menulis huruf. Bahasa Arab ditulis anggun bermula dari arah kanan ke kiri.",
+        canvasSelectLabel: "Pilih Huruf:",
+        canvasColorLabel: "Warna Dakwat:",
+        canvasBrushLabel: "Saiz Berus:",
+        canvasGuideOn: "👁️ Panduan: HIDUP",
+        canvasGuideOff: "👁️ Panduan: MATI",
+        canvasHearBtnText: "🔊 Dengar Huruf",
+        canvasClearBtnText: "Padam",
+        guideHarakatTitle: "<span>✨</span> Tanda Baris Asas (الحَرَكَات - Harakāt)",
+        guideHarakatDesc: "Dalam bahasa Arab, huruf asas ialah konsonan atau vokal panjang. Tanda baris (tasykil) diletakkan di atas atau di bawah huruf untuk menentukan sebutan vokal yang tepat.",
+        hNameFatha: "Fathah (فَتْحَة) - Baris Atas",
+        hSoundFatha: "Bunyi vokal 'a' pendek (seperti 'a' dalam 'ayah')",
+        hDescFatha: "Garis condong kecil di <em>atas</em> huruf. Menghasilkan bunyi vokal 'a' terbuka (cth: دَ = \"Da\").",
+        hNameKasra: "Kasrah (كَسْرَة) - Baris Bawah",
+        hSoundKasra: "Bunyi vokal 'i' pendek (seperti 'i' dalam 'ikan')",
+        hDescKasra: "Garis condong kecil di <em>bawah</em> huruf. Menghasilkan bunyi vokal 'i' kemas (cth: دِ = \"Di\").",
+        hNameDamma: "Dhommah (ضَمَّة) - Baris Depan",
+        hSoundDamma: "Bunyi vokal 'u' pendek (seperti 'u' dalam 'unta')",
+        hDescDamma: "Simbol kecil menyerupai huruf Wau di <em>atas</em> huruf. Menghasilkan bunyi vokal 'u' bulat (cth: دُ = \"Du\").",
+        hNameSukun: "Sukun (سُكُون) - Tanda Mati",
+        hSoundSukun: "Ketiadaan vokal / Huruf mati",
+        hDescSukun: "Bulatan kecil di <em>atas</em> huruf menunjukkan tiada baris vokal. Bunyi konsonan terhenti dengan bersih (cth: دْ = \"D\").",
+        guideShaddahTitle: "<span>⚡</span> Sabdu & Tanwin (Penggandaan & Baris Dua)",
+        hNameShaddah: "Syaddah / Sabdu (شَدَّة)",
+        hSoundShaddah: "Huruf Berganda / Tekanan Sebutan",
+        hDescShaddah: "Menyerupai huruf 'w' kecil. Menandakan huruf tersebut disebut dua kali berturut-turut dengan tekanan dan dengung yang bersesuaian.",
+        hNameTanwin: "Tanwin (تَنْوِين) - Tanda Baris Dua",
+        hSoundTanwin: "Bunyi akhiran nun mati (-an, -in, -un)",
+        hDescTanwin: "Menggandakan tanda baris di hujung kata nama: Baris Dua Atas (-an), Baris Dua Bawah (-in), dan Baris Dua Depan (-un).",
+        guideRulesTitle: "<span>☀️ 🌙</span> Kaedah Tajwid & Sambungan Penting",
+        sunLettersTitle: "☀️ Huruf Syamsiah (الحُرُوفُ الشَّمْسِيَّة)",
+        sunLettersDesc: "Apabila kata sandang <strong>Al- (الـ)</strong> bertemu dengan Huruf Syamsiah, bunyi huruf 'Lam' diabaikan (diidghamkan) dan dimasukkan ke dalam huruf berikutnya dengan tanda Sabdu (cth: <em>asy-syams</em> dan bukannya <em>al-syams</em>).",
+        moonLettersTitle: "🌙 Huruf Qamariah (الحُرُوفُ القَمَرِيَّة)",
+        moonLettersDesc: "Apabila kata sandang <strong>Al- (الـ)</strong> bertemu dengan Huruf Qamariah, bunyi huruf 'Lam' dizahirkan dan disebut dengan jelas (cth: <em>al-qamar</em>).",
+        nonConnectorsTitle: "🔗 6 Huruf Pemutus / Tidak Menyambung (حُرُوفُ الفَصْل)",
+        nonConnectorsDesc: "6 huruf istimewa ini boleh bersambung dengan huruf sebelumnya (dari sebelah kanan), tetapi <strong>tidak boleh bersambung dengan huruf selepasnya</strong> (ke sebelah kiri). Huruf selepasnya wajib ditulis dalam bentuk tunggal atau awal!",
+        modalFormsLabel: "Bentuk Huruf Mengikut Kedudukan (أَشْكَالُ الحَرْف)",
+        lblFormIsolated: "Tunggal",
+        lblFormInitial: "Awal",
+        lblFormMedial: "Tengah",
+        lblFormFinal: "Akhir",
+        modalMakhrajLabel: "Sebutan & Makraj Huruf (مَخْرَجُ الحَرْف)",
+        modalVocabLabel: "Contoh Kosa Kata",
+        modalPronounceBtnText: "Dengarkan Huruf",
+        modalTraceBtnText: "✍️ Latih Menulis",
+        footerQuote: "« طَلَبُ العِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ »",
+        footerSubtitle: "Aplikasi Pembelajaran Bahasa Arab Interaktif • 28 Huruf dari Alif hingga Ya",
+        footerCrafted: "Dibina dengan kaligrafi Arab autentik dan sokongan audio Web Speech API.",
+        footerCrafted: "Hak Cipta © Harun DM"
+      }
+    };
+
+    // Application State
     const AppState = {
+      lang: localStorage.getItem('abjad_lang') || 'en',
       theme: localStorage.getItem('abjad_theme') || 'light',
       audioSpeed: 1.0,
       activeFilter: 'all',
@@ -2545,14 +3102,14 @@
       quizScore: 0,
       quizTotalQuestions: 10,
       quizQuestions: [],
-      canvasLetter: ALPHABET_DATA[1], // Ba
+      canvasLetter: ALPHABET_DATA[1],
       canvasColor: '#0f5132',
       canvasBrushSize: 10,
       canvasShowGuide: true
     };
 
     /* ========================================================================
-       AUDIO SYNTHESIS & WEB AUDIO ENGINE
+       AUDIO SYNTHESIS ENGINE
        ======================================================================== */
     class AudioEngine {
       constructor() {
@@ -2565,7 +3122,6 @@
         if (!this.synth) return;
         const updateVoices = () => {
           const voices = this.synth.getVoices();
-          // Find best Arabic voice
           this.arabicVoice = voices.find(v => v.lang.startsWith('ar')) || null;
         };
         updateVoices();
@@ -2581,7 +3137,7 @@
           return;
         }
 
-        this.synth.cancel(); // Stop active utterance
+        this.synth.cancel();
 
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'ar-SA';
@@ -2614,7 +3170,7 @@
           osc.start();
           osc.stop(ctx.currentTime + 0.3);
         } catch (e) {
-          // Ignore audio context errors
+          // ignore
         }
       }
     }
@@ -2622,28 +3178,170 @@
     const soundManager = new AudioEngine();
 
     /* ========================================================================
+       LANGUAGE (I18N) SWITCHER
+       ======================================================================== */
+    function setLanguage(lang) {
+      if (!I18N[lang]) return;
+      AppState.lang = lang;
+      localStorage.setItem('abjad_lang', lang);
+
+      // Update lang pills active state
+      document.querySelectorAll('.lang-pill').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      const t = I18N[lang];
+
+      // Update static elements
+      document.getElementById('pageTitle').textContent = t.pageTitle;
+      document.getElementById('brandTitle').textContent = t.brandTitle;
+      document.getElementById('brandSubtitle').textContent = t.brandSubtitle;
+
+      // Tabs
+      document.getElementById('tabLabelGrid').textContent = t.tabGrid;
+      document.getElementById('tabLabelFlashcards').textContent = t.tabFlashcards;
+      document.getElementById('tabLabelQuiz').textContent = t.tabQuiz;
+      document.getElementById('tabLabelCanvas').textContent = t.tabCanvas;
+      document.getElementById('tabLabelGuide').textContent = t.tabGuide;
+
+      // Hero
+      document.getElementById('heroBadge').textContent = t.heroBadge;
+      document.getElementById('heroTitleMain').textContent = t.heroTitleMain;
+      document.getElementById('heroTitleAr').textContent = t.heroTitleAr;
+      document.getElementById('heroDesc').innerHTML = t.heroDesc;
+
+      // Stats
+      document.getElementById('statLabelLetters').textContent = t.statLetters;
+      document.getElementById('statLabelForms').textContent = t.statForms;
+      document.getElementById('statLabelSunMoon').textContent = t.statSunMoon;
+      document.getElementById('statLabelAudio').textContent = t.statAudio;
+
+      // Search & Filters
+      document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+      document.getElementById('filterBtnAll').textContent = t.filterAll;
+      document.getElementById('filterBtnSun').textContent = t.filterSun;
+      document.getElementById('filterBtnMoon').textContent = t.filterMoon;
+      document.getElementById('filterBtnNonConn').textContent = t.filterNonConn;
+      document.getElementById('speedBtnText').textContent = t.speedBtnText;
+
+      // Flashcards
+      document.getElementById('fcHintText').innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg>
+        ${t.fcHint}
+      `;
+      document.getElementById('fcPronounceBtnText').textContent = t.fcPronounceBtnText;
+      document.getElementById('fcPrevLabel').textContent = t.fcPrevLabel;
+      document.getElementById('fcFlipLabel').textContent = t.fcFlipLabel;
+      document.getElementById('fcShuffleLabel').textContent = t.fcShuffleLabel;
+      document.getElementById('fcNextLabel').textContent = t.fcNextLabel;
+
+      // Quiz static labels
+      document.getElementById('quizHeaderTitle').textContent = t.quizHeaderTitle;
+      document.getElementById('quizScorePrefix').textContent = t.quizScorePrefix;
+      document.getElementById('quizNextBtnLabel').textContent = t.quizNextBtnLabel;
+      document.getElementById('quizRestartBtnLabel').textContent = t.quizRestartBtnLabel;
+
+      // Canvas
+      document.getElementById('canvasTitle').textContent = t.canvasTitle;
+      document.getElementById('canvasDesc').textContent = t.canvasDesc;
+      document.getElementById('canvasSelectLabel').textContent = t.canvasSelectLabel;
+      document.getElementById('canvasColorLabel').textContent = t.canvasColorLabel;
+      document.getElementById('canvasBrushLabel').textContent = t.canvasBrushLabel;
+      document.getElementById('canvasGuideBtnText').textContent = AppState.canvasShowGuide ? t.canvasGuideOn : t.canvasGuideOff;
+      document.getElementById('canvasHearBtnText').textContent = t.canvasHearBtnText;
+      document.getElementById('canvasClearBtnText').textContent = t.canvasClearBtnText;
+
+      // Guide Harakat
+      document.getElementById('guideHarakatTitle').innerHTML = t.guideHarakatTitle;
+      document.getElementById('guideHarakatDesc').textContent = t.guideHarakatDesc;
+      document.getElementById('hNameFatha').textContent = t.hNameFatha;
+      document.getElementById('hSoundFatha').textContent = t.hSoundFatha;
+      document.getElementById('hDescFatha').innerHTML = t.hDescFatha;
+      document.getElementById('hNameKasra').textContent = t.hNameKasra;
+      document.getElementById('hSoundKasra').textContent = t.hSoundKasra;
+      document.getElementById('hDescKasra').innerHTML = t.hDescKasra;
+      document.getElementById('hNameDamma').textContent = t.hNameDamma;
+      document.getElementById('hSoundDamma').textContent = t.hSoundDamma;
+      document.getElementById('hDescDamma').innerHTML = t.hDescDamma;
+      document.getElementById('hNameSukun').textContent = t.hNameSukun;
+      document.getElementById('hSoundSukun').textContent = t.hSoundSukun;
+      document.getElementById('hDescSukun').innerHTML = t.hDescSukun;
+
+      // Guide Shaddah & Rules
+      document.getElementById('guideShaddahTitle').innerHTML = t.guideShaddahTitle;
+      document.getElementById('hNameShaddah').textContent = t.hNameShaddah;
+      document.getElementById('hSoundShaddah').textContent = t.hSoundShaddah;
+      document.getElementById('hDescShaddah').innerHTML = t.hDescShaddah;
+      document.getElementById('hNameTanwin').textContent = t.hNameTanwin;
+      document.getElementById('hSoundTanwin').textContent = t.hSoundTanwin;
+      document.getElementById('hDescTanwin').innerHTML = t.hDescTanwin;
+
+      document.getElementById('guideRulesTitle').innerHTML = t.guideRulesTitle;
+      document.getElementById('sunLettersTitle').textContent = t.sunLettersTitle;
+      document.getElementById('sunLettersDesc').innerHTML = t.sunLettersDesc;
+      document.getElementById('moonLettersTitle').textContent = t.moonLettersTitle;
+      document.getElementById('moonLettersDesc').innerHTML = t.moonLettersDesc;
+      document.getElementById('nonConnectorsTitle').textContent = t.nonConnectorsTitle;
+      document.getElementById('nonConnectorsDesc').innerHTML = t.nonConnectorsDesc;
+
+      // Modal labels
+      document.getElementById('modalFormsLabel').textContent = t.modalFormsLabel;
+      document.getElementById('lblFormIsolated').textContent = t.lblFormIsolated;
+      document.getElementById('lblFormInitial').textContent = t.lblFormInitial;
+      document.getElementById('lblFormMedial').textContent = t.lblFormMedial;
+      document.getElementById('lblFormFinal').textContent = t.lblFormFinal;
+      document.getElementById('modalMakhrajLabel').textContent = t.modalMakhrajLabel;
+      document.getElementById('modalVocabLabel').textContent = t.modalVocabLabel;
+      document.getElementById('modalPronounceBtnText').textContent = t.modalPronounceBtnText;
+      document.getElementById('modalTraceBtnText').textContent = t.modalTraceBtnText;
+
+      // Footer
+      document.getElementById('footerSubtitle').textContent = t.footerSubtitle;
+      document.getElementById('footerCrafted').textContent = t.footerCrafted;
+
+      // Re-render Dynamic Views
+      renderGrid();
+      updateFlashcard();
+      populateCanvasSelector();
+      if (document.getElementById('letterModal').classList.contains('open')) {
+        openLetterModal(AppState.selectedLetterForModal);
+      }
+      if (AppState.quizQuestions.length > 0) {
+        renderQuizQuestion();
+      }
+    }
+
+    document.getElementById('langBtnEn').addEventListener('click', () => setLanguage('en'));
+    document.getElementById('langBtnMs').addEventListener('click', () => setLanguage('ms'));
+
+    /* ========================================================================
        RENDER ALPHABET GRID
        ======================================================================== */
     function renderGrid() {
       const grid = document.getElementById('alphabetGrid');
       grid.innerHTML = '';
+      const t = I18N[AppState.lang];
 
       const query = AppState.searchQuery.toLowerCase().trim();
       const filtered = ALPHABET_DATA.filter(item => {
-        // Category filter
         if (AppState.activeFilter === 'sun' && item.type !== 'sun') return false;
         if (AppState.activeFilter === 'moon' && item.type !== 'moon') return false;
         if (AppState.activeFilter === 'non-connector' && item.connector !== false) return false;
 
-        // Search text
         if (!query) return true;
+        const nameToSearch = AppState.lang === 'ms' ? item.nameMs : item.nameEn;
+        const soundToSearch = AppState.lang === 'ms' ? item.sound.ms : item.sound.en;
+        const meaningToSearch = AppState.lang === 'ms' ? item.example.meaningMs : item.example.meaningEn;
+
         return (
           item.letter.includes(query) ||
+          nameToSearch.toLowerCase().includes(query) ||
           item.nameEn.toLowerCase().includes(query) ||
+          item.nameMs.toLowerCase().includes(query) ||
           item.nameAr.includes(query) ||
-          item.sound.toLowerCase().includes(query) ||
+          soundToSearch.toLowerCase().includes(query) ||
           item.example.en.toLowerCase().includes(query) ||
-          item.example.meaning.toLowerCase().includes(query)
+          meaningToSearch.toLowerCase().includes(query)
         );
       });
 
@@ -2651,8 +3349,8 @@
         grid.innerHTML = `
           <div style="grid-column: 1 / -1; text-align: center; padding: 48px; color: var(--text-muted);">
             <div style="font-size: 3rem; margin-bottom: 12px;">🔍</div>
-            <h3>No letters match "${AppState.searchQuery}"</h3>
-            <p style="margin-top: 6px;">Try searching for another letter or clear the filter.</p>
+            <h3>${AppState.lang === 'ms' ? `Tiada huruf sepadan dengan "${AppState.searchQuery}"` : `No letters match "${AppState.searchQuery}"`}</h3>
+            <p style="margin-top: 6px;">${AppState.lang === 'ms' ? 'Sila cuba carian lain atau set semula penapis.' : 'Try searching for another letter or clear the filter.'}</p>
           </div>
         `;
         return;
@@ -2664,44 +3362,46 @@
         card.setAttribute('role', 'button');
         card.setAttribute('tabindex', '0');
 
+        const letterDisplayName = AppState.lang === 'ms' ? item.nameMs : item.nameEn;
+        const letterSound = AppState.lang === 'ms' ? item.sound.ms : item.sound.en;
+        const letterMeaning = AppState.lang === 'ms' ? item.example.meaningMs : item.example.meaningEn;
+
         card.innerHTML = `
           <div class="card-top">
             <span class="letter-index">#${item.id}</span>
             <div class="card-badges">
               <span class="badge ${item.type === 'sun' ? 'badge-sun' : 'badge-moon'}">
-                ${item.type === 'sun' ? '☀️ Sun' : '🌙 Moon'}
+                ${item.type === 'sun' ? t.sunBadge : t.moonBadge}
               </span>
-              ${!item.connector ? '<span class="badge badge-nonconnector">1-Way</span>' : ''}
+              ${!item.connector ? `<span class="badge badge-nonconnector">${t.nonConnBadge}</span>` : ''}
             </div>
           </div>
 
           <div class="letter-hero">
             <div class="letter-glyph ar">${item.letter}</div>
             <div class="letter-name-row">
-              <span class="letter-name-en">${item.nameEn}</span>
+              <span class="letter-name-en">${letterDisplayName}</span>
               <span class="letter-name-ar ar">${item.nameAr}</span>
             </div>
           </div>
 
           <div class="phonetic-guide">
-            ${item.sound}
+            ${letterSound}
           </div>
 
           <div class="card-footer">
             <div class="sample-word">
-              <span>Eg:</span>
+              <span>${t.cardEg}</span>
               <span class="word-ar ar">${item.example.ar}</span>
-              <span>(${item.example.en})</span>
+              <span>(${letterMeaning})</span>
             </div>
-            <button class="play-audio-btn" title="Pronounce ${item.nameEn}" aria-label="Listen">
+            <button class="play-audio-btn" title="${t.cardListen} ${letterDisplayName}" aria-label="Listen">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
             </button>
           </div>
         `;
 
-        // Card Click opens details modal
         card.addEventListener('click', (e) => {
-          // If audio button specifically clicked, just play audio
           if (e.target.closest('.play-audio-btn')) {
             const btn = card.querySelector('.play-audio-btn');
             btn.classList.add('playing');
@@ -2725,38 +3425,41 @@
 
     function openLetterModal(letterObj) {
       AppState.selectedLetterForModal = letterObj;
+      const t = I18N[AppState.lang];
 
       document.getElementById('modalCharHuge').textContent = letterObj.letter;
-      document.getElementById('modalNameEn').textContent = letterObj.nameEn;
+      document.getElementById('modalNameEn').textContent = AppState.lang === 'ms' ? letterObj.nameMs : letterObj.nameEn;
       document.getElementById('modalNameAr').textContent = letterObj.nameAr;
 
-      // Badges
       const badgesContainer = document.getElementById('modalBadges');
+      const isSun = letterObj.type === 'sun';
       badgesContainer.innerHTML = `
-        <span class="badge ${letterObj.type === 'sun' ? 'badge-sun' : 'badge-moon'}">
-          ${letterObj.type === 'sun' ? '☀️ Sun Letter (حرف شمسي)' : '🌙 Moon Letter (حرف قمري)'}
+        <span class="badge ${isSun ? 'badge-sun' : 'badge-moon'}">
+          ${isSun ? (AppState.lang === 'ms' ? '☀️ Huruf Syamsiah (حرف شمسي)' : '☀️ Sun Letter (حرف شمسي)') : (AppState.lang === 'ms' ? '🌙 Huruf Qamariah (حرف قمري)' : '🌙 Moon Letter (حرف قمري)')}
         </span>
         ${!letterObj.connector 
-          ? '<span class="badge badge-nonconnector">🔗 Non-Connecting (حرف فصل)</span>' 
-          : '<span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669;">🔗 Full Connector</span>'}
+          ? `<span class="badge badge-nonconnector">${AppState.lang === 'ms' ? '🔗 Huruf Pemutus (حرف فصل)' : '🔗 Non-Connecting (حرف فصل)'}</span>` 
+          : `<span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669;">${t.fullConnBadge}</span>`}
       `;
 
-      // 4 Forms
       document.getElementById('modalFormIsolated').textContent = letterObj.isolated;
       document.getElementById('modalFormInitial').textContent = letterObj.initial;
       document.getElementById('modalFormMedial').textContent = letterObj.medial;
       document.getElementById('modalFormFinal').textContent = letterObj.final;
 
-      // Makhraj & Sound
+      const makhrajText = AppState.lang === 'ms' ? letterObj.makhraj.ms : letterObj.makhraj.en;
+      const tipText = AppState.lang === 'ms' ? letterObj.phoneticTip.ms : letterObj.phoneticTip.en;
+      const makhrajLabel = AppState.lang === 'ms' ? 'Tempat Makraj' : 'Point of Articulation';
+      const tipLabel = AppState.lang === 'ms' ? 'Tip Sebutan' : 'Tip';
+
       document.getElementById('modalMakhrajDesc').innerHTML = `
-        <strong>Point of Articulation:</strong> ${letterObj.makhraj}<br>
-        <strong>Tip:</strong> ${letterObj.phoneticTip}
+        <strong>${makhrajLabel}:</strong> ${makhrajText}<br>
+        <strong>${tipLabel}:</strong> ${tipText}
       `;
 
-      // Vocabulary
       document.getElementById('modalWordAr').textContent = letterObj.example.ar;
       document.getElementById('modalWordEn').textContent = letterObj.example.en;
-      document.getElementById('modalWordMeaning').textContent = letterObj.example.meaning;
+      document.getElementById('modalWordMeaning').textContent = AppState.lang === 'ms' ? letterObj.example.meaningMs : letterObj.example.meaningEn;
 
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -2787,7 +3490,6 @@
 
     document.getElementById('modalTraceBtn').addEventListener('click', () => {
       closeModal();
-      // Switch to writing canvas tab and set this letter
       switchTab('tab-canvas');
       setCanvasLetter(AppState.selectedLetterForModal);
     });
@@ -2799,22 +3501,25 @@
 
     function updateFlashcard() {
       const item = ALPHABET_DATA[AppState.flashcardIndex];
+      const t = I18N[AppState.lang];
       AppState.flashcardFlipped = false;
       flashcardElement.classList.remove('flipped');
 
-      document.getElementById('fcCurrentNum').textContent = AppState.flashcardIndex + 1;
+      document.getElementById('fcProgressText').textContent = t.fcProgress.replace('{current}', AppState.flashcardIndex + 1);
+
       const catBadge = document.getElementById('fcCategoryBadge');
       catBadge.className = `badge ${item.type === 'sun' ? 'badge-sun' : 'badge-moon'}`;
-      catBadge.textContent = item.type === 'sun' ? '☀️ Sun Letter' : '🌙 Moon Letter';
+      catBadge.textContent = item.type === 'sun' ? t.sunLetter : t.moonLetter;
 
       document.getElementById('fcFrontChar').textContent = item.letter;
-      document.getElementById('fcBackNameEn').textContent = item.nameEn;
+      document.getElementById('fcBackNameEn').textContent = AppState.lang === 'ms' ? item.nameMs : item.nameEn;
       document.getElementById('fcBackNameAr').textContent = item.nameAr;
-      document.getElementById('fcBackSound').textContent = `${item.sound} (Makhraj: ${item.translit})`;
+      const soundText = AppState.lang === 'ms' ? item.sound.ms : item.sound.en;
+      document.getElementById('fcBackSound').textContent = `${soundText} (${item.translit})`;
 
       document.getElementById('fcBackWordAr').textContent = item.example.ar;
       document.getElementById('fcBackWordEn').textContent = item.example.en;
-      document.getElementById('fcBackWordMeaning').textContent = item.example.meaning;
+      document.getElementById('fcBackWordMeaning').textContent = AppState.lang === 'ms' ? item.example.meaningMs : item.example.meaningEn;
     }
 
     flashcardElement.addEventListener('click', () => {
@@ -2862,37 +3567,19 @@
        QUIZ SYSTEM
        ======================================================================== */
     function generateQuiz() {
-      // Create 10 varied questions
       const shuffledLetters = [...ALPHABET_DATA].sort(() => 0.5 - Math.random());
       const selected = shuffledLetters.slice(0, 10);
 
       AppState.quizQuestions = selected.map((target, idx) => {
-        // Mix types: 0: Name match, 1: Initial form match, 2: Sun/Moon identification
         const qType = idx % 3;
         const distractors = ALPHABET_DATA.filter(l => l.id !== target.id)
                                         .sort(() => 0.5 - Math.random())
                                         .slice(0, 3);
         const allFour = [target, ...distractors].sort(() => 0.5 - Math.random());
 
-        let questionText = "Which letter is this?";
-        let targetDisplay = target.letter;
-
-        if (qType === 0) {
-          questionText = `What is the name of this character:`;
-          targetDisplay = target.letter;
-        } else if (qType === 1) {
-          questionText = `What is the INITIAL form of this letter:`;
-          targetDisplay = target.isolated;
-        } else {
-          questionText = `Listen to the letter and select the matching Arabic character:`;
-          targetDisplay = "🔊";
-        }
-
         return {
           target,
           qType,
-          questionText,
-          targetDisplay,
           options: allFour
         };
       });
@@ -2907,20 +3594,32 @@
 
     function renderQuizQuestion() {
       const q = AppState.quizQuestions[AppState.quizCurrentIndex];
+      const t = I18N[AppState.lang];
       if (!q) {
         showQuizResults();
         return;
       }
 
-      document.getElementById('quizQuestionNum').textContent = AppState.quizCurrentIndex + 1;
-      document.getElementById('quizQuestionText').textContent = q.questionText;
+      document.getElementById('quizQuestionCount').textContent = t.quizQuestionCount.replace('{current}', AppState.quizCurrentIndex + 1);
+
+      let questionPrompt = t.quizQName;
+      let targetDisplay = q.target.letter;
+
+      if (q.qType === 1) {
+        questionPrompt = t.quizQInitial;
+        targetDisplay = q.target.isolated;
+      } else if (q.qType === 2) {
+        questionPrompt = t.quizQSound;
+        targetDisplay = "🔊";
+      }
+
+      document.getElementById('quizQuestionText').textContent = questionPrompt;
       const targetEl = document.getElementById('quizTargetChar');
-      targetEl.textContent = q.targetDisplay;
+      targetEl.textContent = targetDisplay;
 
       const listenBtn = document.getElementById('quizListenBtn');
       listenBtn.onclick = () => soundManager.speak(q.target.nameAr);
 
-      // Auto play sound if question type is listen
       if (q.qType === 2) {
         soundManager.speak(q.target.nameAr);
       }
@@ -2933,13 +3632,14 @@
       q.options.forEach(opt => {
         const btn = document.createElement('button');
         btn.className = 'quiz-btn';
+        const optName = AppState.lang === 'ms' ? opt.nameMs : opt.nameEn;
 
         if (q.qType === 1) {
           btn.innerHTML = `<span class="ar" style="font-size: 1.8rem;">${opt.initial}</span>`;
         } else if (q.qType === 0) {
-          btn.innerHTML = `${opt.nameEn} <span class="ar" style="color: var(--text-muted); font-size: 1.1rem; margin-left: 6px;">(${opt.nameAr})</span>`;
+          btn.innerHTML = `${optName} <span class="ar" style="color: var(--text-muted); font-size: 1.1rem; margin-left: 6px;">(${opt.nameAr})</span>`;
         } else {
-          btn.innerHTML = `<span class="ar" style="font-size: 2rem;">${opt.letter}</span> - ${opt.nameEn}`;
+          btn.innerHTML = `<span class="ar" style="font-size: 2rem;">${opt.letter}</span> - ${optName}`;
         }
 
         btn.onclick = () => handleQuizAnswer(opt, q.target, btn);
@@ -2950,22 +3650,23 @@
     function handleQuizAnswer(selectedOpt, correctTarget, selectedBtn) {
       const allBtns = document.querySelectorAll('.quiz-btn');
       allBtns.forEach(b => b.disabled = true);
+      const t = I18N[AppState.lang];
 
       const isCorrect = selectedOpt.id === correctTarget.id;
       const feedback = document.getElementById('quizFeedback');
+      const correctName = AppState.lang === 'ms' ? correctTarget.nameMs : correctTarget.nameEn;
 
       if (isCorrect) {
         selectedBtn.classList.add('correct');
         AppState.quizScore += 10;
         document.getElementById('quizScore').textContent = AppState.quizScore;
-        feedback.innerHTML = `<span style="color: #2e7d32;">✨ Correct! Excellent work!</span>`;
+        feedback.innerHTML = `<span style="color: #2e7d32;">${t.quizCorrect}</span>`;
         soundManager.speak(correctTarget.nameAr);
       } else {
         selectedBtn.classList.add('incorrect');
-        feedback.innerHTML = `<span style="color: #c62828;">Incorrect! The correct answer was <strong>${correctTarget.nameEn} (${correctTarget.nameAr})</strong></span>`;
-        // Highlight correct button
+        feedback.innerHTML = `<span style="color: #c62828;">${t.quizIncorrect} <strong>${correctName} (${correctTarget.nameAr})</strong></span>`;
         allBtns.forEach(btn => {
-          if (btn.textContent.includes(correctTarget.nameEn) || btn.textContent.includes(correctTarget.initial)) {
+          if (btn.textContent.includes(correctName) || btn.textContent.includes(correctTarget.initial)) {
             btn.classList.add('correct');
           }
         });
@@ -2980,23 +3681,24 @@
     }
 
     function showQuizResults() {
-      document.getElementById('quizQuestionText').textContent = "Quiz Complete!";
+      const t = I18N[AppState.lang];
+      document.getElementById('quizQuestionText').textContent = t.quizComplete;
       document.getElementById('quizTargetChar').textContent = "🎉";
       document.getElementById('quizOptionsContainer').innerHTML = '';
       document.getElementById('quizNextBtn').style.display = 'none';
 
       const percentage = (AppState.quizScore / 100) * 100;
-      let praise = "Good try! Practice makes perfect.";
+      let praise = AppState.lang === 'ms' ? "Usaha yang baik! Teruskan latihan untuk lebih mahir." : "Good try! Practice makes perfect.";
       if (percentage >= 80) {
-        praise = "Māshā’Allāh! Outstanding mastery of the Arabic alphabet!";
+        praise = AppState.lang === 'ms' ? "Māshā’Allāh! Penguasaan huruf Hijaiyah anda sungguh cemerlang!" : "Māshā’Allāh! Outstanding mastery of the Arabic alphabet!";
         launchConfetti();
       } else if (percentage >= 60) {
-        praise = "Well done! You have a solid grasp of the letters.";
+        praise = AppState.lang === 'ms' ? "Tahniah! Anda mempunyai asas pemahaman huruf yang kukuh." : "Well done! You have a solid grasp of the letters.";
       }
 
       document.getElementById('quizFeedback').innerHTML = `
         <div style="padding: 20px;">
-          <h4 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 8px;">Final Score: ${AppState.quizScore} / 100</h4>
+          <h4 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 8px;">${t.quizFinalScore} ${AppState.quizScore} / 100</h4>
           <p style="color: var(--text-muted); font-size: 1.05rem;">${praise}</p>
         </div>
       `;
@@ -3069,14 +3771,19 @@
     canvas.addEventListener('touchmove', draw, { passive: false });
     window.addEventListener('touchend', stopDrawing);
 
-    // Canvas Letter Selector
     const letterSelect = document.getElementById('canvasLetterSelect');
-    ALPHABET_DATA.forEach(item => {
-      const opt = document.createElement('option');
-      opt.value = item.id;
-      opt.textContent = `${item.id}. ${item.letter} - ${item.nameEn}`;
-      letterSelect.appendChild(opt);
-    });
+    function populateCanvasSelector() {
+      const currentVal = letterSelect.value;
+      letterSelect.innerHTML = '';
+      ALPHABET_DATA.forEach(item => {
+        const opt = document.createElement('option');
+        opt.value = item.id;
+        const displayName = AppState.lang === 'ms' ? item.nameMs : item.nameEn;
+        opt.textContent = `${item.id}. ${item.letter} - ${displayName}`;
+        letterSelect.appendChild(opt);
+      });
+      if (currentVal) letterSelect.value = currentVal;
+    }
 
     function setCanvasLetter(letterObj) {
       AppState.canvasLetter = letterObj;
@@ -3097,12 +3804,12 @@
     });
 
     document.getElementById('canvasToggleGuideBtn').addEventListener('click', function() {
+      const t = I18N[AppState.lang];
       AppState.canvasShowGuide = !AppState.canvasShowGuide;
       document.getElementById('canvasGuideChar').style.display = AppState.canvasShowGuide ? 'block' : 'none';
-      this.textContent = AppState.canvasShowGuide ? '👁️ Guide: ON' : '👁️ Guide: OFF';
+      document.getElementById('canvasGuideBtnText').textContent = AppState.canvasShowGuide ? t.canvasGuideOn : t.canvasGuideOff;
     });
 
-    // Color Swatches
     document.querySelectorAll('.color-swatch').forEach(swatch => {
       swatch.addEventListener('click', () => {
         document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
@@ -3131,7 +3838,8 @@
         const tag = document.createElement('div');
         tag.className = 'letter-tag ar';
         tag.textContent = item.letter;
-        tag.title = `${item.nameEn} (${item.nameAr})`;
+        const tagTitle = AppState.lang === 'ms' ? `${item.nameMs} (${item.nameAr})` : `${item.nameEn} (${item.nameAr})`;
+        tag.title = tagTitle;
         tag.style.cursor = 'pointer';
         tag.addEventListener('click', () => {
           soundManager.speak(item.nameAr);
@@ -3228,7 +3936,7 @@
     applyTheme(AppState.theme);
 
     /* ========================================================================
-       CONFETTI EFFECT (Pure JS Celebration)
+       CONFETTI EFFECT
        ======================================================================== */
     function launchConfetti() {
       const cCanvas = document.getElementById('confettiCanvas');
@@ -3283,13 +3991,10 @@
        INITIALIZATION
        ======================================================================== */
     window.addEventListener('DOMContentLoaded', () => {
-      renderGrid();
-      updateFlashcard();
+      setLanguage(AppState.lang);
       populateGuideClouds();
       window.addEventListener('resize', resizeCanvas);
     });
   </script>
 </body>
 </html>
-
-
